@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #f9fafb;
+      --bg: #fffbf2;
       --bg-soft: #ffffff;
       --card: #ffffff;
-      --accent: #0ea5e9; /* calm cyan/teal */
-      --accent-soft: rgba(14, 165, 233, 0.12);
-      --text-main: #111827;   /* gray-900 */
-      --text-soft: #4b5563;   /* gray-600 */
+      --accent: #f97316; /* warm orange */
+      --accent-soft: rgba(249, 115, 22, 0.12);
+      --text-main: #1f2933;   /* warm-ish dark gray */
+      --text-soft: #6b7280;   /* gray-600 */
       --border-subtle: #e5e7eb;
       --radius-lg: 1.1rem;
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
@@ -30,7 +30,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, #e0f2fe 0, #f9fafb 45%, #ffffff 100%);
+        radial-gradient(circle at top left, #ffedd5 0, #fffbf2 40%, #ffffff 100%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       background-size: 140% 140%;
@@ -58,68 +58,69 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(14px);
-      background: rgba(249, 250, 251, 0.9);
-      border-bottom: 1px solid #e5e7eb;
+      background: rgba(255, 250, 240, 0.92);
+      border-bottom: 1px solid #fed7aa;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.7rem 0;
+      padding: 0.6rem 0;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
     }
 
     .logo-mark {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
       border: 2px solid var(--accent);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       color: var(--accent);
-      background: #f0f9ff;
+      background: #fff7ed;
     }
 
     .logo-text-main {
       font-weight: 600;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
     }
 
     .logo-text-sub {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--text-soft);
     }
 
     .nav {
       display: flex;
-      gap: 1.4rem;
-      font-size: 0.88rem;
+      gap: 1.1rem;
+      font-size: 0.86rem;
     }
 
     .nav a {
       position: relative;
       color: var(--text-soft);
+      padding-bottom: 0.1rem;
     }
 
     .nav a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -0.2rem;
+      bottom: -0.16rem;
       height: 2px;
       width: 0;
       background: var(--accent);
-      transition: width 0.18s ease-out;
+      transition: width 0.16s ease-out;
     }
 
     .nav a:hover {
@@ -134,23 +135,23 @@
       .header-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.4rem;
+        gap: 0.3rem;
       }
       .nav {
-        gap: 1rem;
+        gap: 0.8rem;
         flex-wrap: wrap;
       }
     }
 
     /* Hero */
     .hero {
-      padding: 3.4rem 0 2.4rem;
+      padding: 2.8rem 0 2.0rem;
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 2.8rem;
+      gap: 2.2rem;
       align-items: center;
     }
 
@@ -163,15 +164,15 @@
     .eyebrow {
       font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       color: var(--accent);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
     .hero-title {
-      font-size: 2.6rem;
-      line-height: 1.1;
-      margin: 0 0 0.75rem;
+      font-size: 2.3rem;
+      line-height: 1.12;
+      margin: 0 0 0.65rem;
     }
 
     .hero-title span {
@@ -179,31 +180,16 @@
     }
 
     .hero-tagline {
-      font-size: 1.05rem;
+      font-size: 1.0rem;
       color: var(--text-soft);
-      max-width: 34rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .pill {
-      font-size: 0.78rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--text-soft);
-      background: #f9fafb;
+      max-width: 32rem;
+      margin-bottom: 0.9rem;
     }
 
     .hero-note {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--text-soft);
+      max-width: 32rem;
     }
 
     .hero-note strong {
@@ -213,12 +199,12 @@
     /* Hero art */
     .hero-art {
       position: relative;
-      height: 260px;
-      border-radius: 1.5rem;
-      background: radial-gradient(circle at 20% 10%, rgba(14, 165, 233, 0.18), transparent 55%),
-                  radial-gradient(circle at 80% 90%, rgba(129, 140, 248, 0.16), transparent 50%),
+      height: 240px;
+      border-radius: 1.3rem;
+      background: radial-gradient(circle at 20% 10%, rgba(248, 171, 84, 0.2), transparent 55%),
+                  radial-gradient(circle at 80% 90%, rgba(244, 114, 182, 0.16), transparent 50%),
                   #ffffff;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #fed7aa;
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
@@ -226,12 +212,13 @@
     .hero-grid-pattern {
       position: absolute;
       inset: 16%;
-      border-radius: 1.1rem;
-      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 1rem;
+      border: 1px solid rgba(248, 171, 84, 0.25);
       background-image:
-        linear-gradient(to right, rgba(148, 163, 184, 0.16) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(148, 163, 184, 0.16) 1px, transparent 1px);
+        linear-gradient(to right, rgba(248, 171, 84, 0.22) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(248, 171, 84, 0.12) 1px, transparent 1px);
       background-size: 26px 26px;
+      opacity: 0.9;
     }
 
     .hero-chip {
@@ -239,17 +226,17 @@
       top: 18%;
       left: 14%;
       width: 150px;
-      height: 82px;
+      height: 78px;
       border-radius: 0.85rem;
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      background: #fffaf5;
+      border: 1px solid #fed7aa;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 0.6rem 0.8rem;
+      padding: 0.55rem 0.8rem;
       font-size: 0.72rem;
       color: var(--text-soft);
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 10px 24px rgba(148, 92, 43, 0.18);
     }
 
     .hero-chip-title {
@@ -263,7 +250,7 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-top: 0.1rem;
+      margin-top: 0.08rem;
     }
 
     .hero-chip-kv span:first-child {
@@ -279,20 +266,20 @@
       position: absolute;
       right: 12%;
       bottom: 14%;
-      width: 110px;
-      height: 110px;
+      width: 105px;
+      height: 105px;
       border-radius: 50%;
-      border: 1px dashed rgba(148, 163, 184, 0.8);
+      border: 1px dashed rgba(248, 171, 84, 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .hero-orbit-inner {
-      width: 60px;
-      height: 60px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
-      border: 1px solid rgba(14, 165, 233, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -300,14 +287,14 @@
       color: var(--accent);
       text-align: center;
       padding: 0.3rem;
-      box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.55);
+      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
       animation: orbitPulse 3s ease-in-out infinite;
-      background: #f0f9ff;
+      background: #fff7ed;
     }
 
     /* Sections */
     section {
-      padding: 2.4rem 0 0.4rem;
+      padding: 2.2rem 0 0.4rem;
     }
 
     .section-header {
@@ -315,11 +302,11 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
 
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       margin: 0;
     }
 
@@ -342,7 +329,7 @@
       display: flex;
       gap: 0.6rem;
       padding: 0.45rem 0;
-      border-bottom: 1px dashed #e5e7eb;
+      border-bottom: 1px dashed #fcd9b6;
     }
 
     .news-item:last-child {
@@ -351,7 +338,7 @@
 
     .news-date {
       font-size: 0.8rem;
-      color: #6b7280;
+      color: #9a7b4f;
       min-width: 5.1rem;
       flex-shrink: 0;
     }
@@ -369,11 +356,11 @@
     }
 
     .thrust-card {
-      background: linear-gradient(135deg, #ffffff, #f9fafb);
+      background: linear-gradient(135deg, #ffffff, #fff7ed);
       border-radius: var(--radius-lg);
-      padding: 1.35rem;
+      padding: 1.3rem;
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+      box-shadow: 0 14px 30px rgba(148, 92, 43, 0.08);
       transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out, background 0.14s ease-out;
       position: relative;
       overflow: hidden;
@@ -383,7 +370,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.19), transparent 55%);
+      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 55%);
       opacity: 0;
       transition: opacity 0.16s ease-out;
       pointer-events: none;
@@ -391,8 +378,8 @@
 
     .thrust-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
-      border-color: rgba(14, 165, 233, 0.7);
+      box-shadow: 0 18px 45px rgba(148, 92, 43, 0.15);
+      border-color: rgba(249, 115, 22, 0.7);
     }
 
     .thrust-card:hover::before {
@@ -404,12 +391,12 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       color: var(--accent);
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.4rem;
     }
 
     .thrust-name {
-      font-size: 1.05rem;
-      margin: 0 0 0.4rem;
+      font-size: 1.02rem;
+      margin: 0 0 0.35rem;
     }
 
     .thrust-body {
@@ -421,10 +408,10 @@
     .simple-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 1.3rem;
+      padding: 1.25rem;
       border: 1px solid var(--border-subtle);
-      margin-bottom: 1.6rem;
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
       font-size: 0.9rem;
       color: var(--text-soft);
     }
@@ -442,7 +429,7 @@
 
     /* Footer */
     .site-footer {
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid #fed7aa;
       margin-top: 2rem;
       padding: 1.4rem 0 1.8rem;
       font-size: 0.8rem;
@@ -500,15 +487,15 @@
     /* Orbit glow */
     @keyframes orbitPulse {
       0% {
-        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.55);
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55);
         transform: scale(1);
       }
       50% {
-        box-shadow: 0 0 18px 10px rgba(14, 165, 233, 0.2);
+        box-shadow: 0 0 16px 9px rgba(249, 115, 22, 0.18);
         transform: scale(1.03);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.0);
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
         transform: scale(1);
       }
     }
@@ -519,12 +506,10 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="logo">
-          <div>
-            <div class="logo-mark">JiQL</div>
-          </div>
+          <div class="logo-mark">JiQL</div>
           <div>
             <div class="logo-text-main">Ji Quantum Lab</div>
-            <div class="logo-text-sub">MIT · Quantum materials in the microwave world</div>
+            <div class="logo-text-sub">MIT Physics · Quantum materials in the microwave world</div>
           </div>
         </div>
         <nav class="nav">
@@ -552,14 +537,9 @@
               correlated and topological phases in 2D materials, and to learn how
               to program new quantum states of matter.
             </p>
-            <div class="hero-pill-row">
-              <span class="pill">Microwave quantum transport</span>
-              <span class="pill">Microwave imaging &amp; scanning</span>
-              <span class="pill">Programmable quantum phases</span>
-            </div>
             <p class="hero-note">
-              <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026;
-              students and postdocs interested in building new tools and new physics are welcome.
+              <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026.
+              Students and postdocs interested in building new tools and new physics are very welcome.
             </p>
           </div>
 
@@ -592,8 +572,7 @@
           <div class="section-header">
             <h2 class="section-title">News &amp; updates</h2>
             <p class="section-sub">
-              A few snapshots of what the lab is doing as we build new tools,
-              new collaborations, and new quantum experiments.
+              A few snapshots of what we are building and planning as the lab takes shape.
             </p>
           </div>
 
@@ -617,7 +596,7 @@
                 <div class="news-date">Ongoing</div>
                 <div class="news-text">
                   If you are interested in microwave techniques, 2D materials,
-                  or programmable quantum phases, feel free to reach out.
+                  or programmable quantum phases, you are warmly encouraged to reach out.
                 </div>
               </li>
             </ul>
@@ -690,8 +669,7 @@
             </ul>
             <p style="margin-top:0.8rem;">
               We value collaborative, humane science and welcome people who are
-              excited to build new instruments, ask deep questions, and learn
-              together.
+              excited to build new instruments, ask deep questions, and learn together.
             </p>
           </div>
         </div>
