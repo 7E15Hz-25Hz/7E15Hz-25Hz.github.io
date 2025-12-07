@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ji Quantum Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617;
+      --card: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --border-subtle: #1e293b;
+      --radius-lg: 1.1rem;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, #0f172a 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      background-size: 140% 140%;
+      animation: bgShift 22s ease-in-out infinite alternate;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.78);
+      border-bottom: 1px solid rgba(30, 64, 175, 0.4);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text-main {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.74rem;
+      color: var(--text-soft);
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.88rem;
+    }
+
+    .nav a {
+      position: relative;
+      color: var(--text-soft);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+      .nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.4rem 0 2.8rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      line-height: 1.1;
+      margin: 0 0 0.75rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+
+    .hero-note strong {
+      color: var(--text-main);
+    }
+
+    /* Hero art */
+    .hero-art {
+      position: relative;
+      height: 260px;
+      border-radius: 1.5rem;
+      background: radial-gradient(circle at 20% 10%, rgba(56, 189, 248, 0.2), transparent 55%),
+                  radial-gradient(circle at 80% 90%, rgba(129, 140, 248, 0.25), transparent 50%),
+                  #020617;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 16%;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.11) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.11) 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+
+    .hero-chip {
+      position: absolute;
+      top: 18%;
+      left: 14%;
+      width: 140px;
+      height: 76px;
+      border-radius: 0.85rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0.55rem 0.7rem;
+      font-size: 0.72rem;
+      color: var(--text-soft);
+    }
+
+    .hero-chip-title {
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-chip-kv {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 0.1rem;
+    }
+
+    .hero-chip-kv span:first-child {
+      font-size: 0.7rem;
+    }
+
+    .hero-chip-kv span:last-child {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      right: 12%;
+      bottom: 14%;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-orbit-inner {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-align: center;
+      padding: 0.3rem;
+      box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6);
+      animation: orbitPulse 3s ease-in-out infinite;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.4rem 0 0.4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      max-width: 26rem;
+    }
+
+    .thrust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.3rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .thrust-card {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 1));
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.8);
+      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out, background 0.14s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thrust-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.17), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.16s ease-out;
+      pointer-events: none;
+    }
+
+    .thrust-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.95);
+      border-color: rgba(56, 189, 248, 0.7);
+    }
+
+    .thrust-card:hover::before {
+      opacity: 1;
+    }
+
+    .thrust-tag {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 0.55rem;
+    }
+
+    .thrust-name {
+      font-size: 1.05rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .thrust-body {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* People / Publications */
+    .simple-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.6rem;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .people-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.8rem 0 0;
+      font-size: 0.9rem;
+    }
+
+    .people-list li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.7);
+      margin-top: 2rem;
+      padding: 1.4rem 0 1.8rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    /* Background animation */
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 40% 60%;
+      }
+      100% {
+        background-position: 80% 20%;
+      }
+    }
+
+    /* Fade-up animation for hero + cards */
+    .hero,
+    .thrust-card,
+    .simple-card {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.7s ease-out forwards;
+    }
+
+    .thrust-card:nth-child(1) {
+      animation-delay: 0.25s;
+    }
+    .thrust-card:nth-child(2) {
+      animation-delay: 0.35s;
+    }
+    .thrust-card:nth-child(3) {
+      animation-delay: 0.45s;
+    }
+
+    .simple-card {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Orbit glow */
+    @keyframes orbitPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 18px 10px rgba(56, 189, 248, 0.15);
+        transform: scale(1.03);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.0);
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <div>
+            <div class="logo-mark">JiQL</div>
+          </div>
+          <div>
+            <div class="logo-text-main">Ji Quantum Lab</div>
+            <div class="logo-text-sub">MIT · Quantum materials in the microwave world</div>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#research">Research</a>
+          <a href="#people">People</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Ji Quantum Lab · MIT</div>
+            <h1 class="hero-title">
+              Seeing quantum materials<br />
+              in the <span>microwave</span> world.
+            </h1>
+            <p class="hero-tagline">
+              We build microwave transport and scanning experiments to explore
+              correlated and topological phases in 2D materials, and to learn how
+              to program new quantum states of matter.
+            </p>
+            <div class="hero-pill-row">
+              <span class="pill">Microwave quantum transport</span>
+              <span class="pill">Microwave imaging &amp; scanning</span>
+              <span class="pill">Programmable quantum phases</span>
+            </div>
+            <p class="hero-note">
+              <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026;
+              students and postdocs interested in building new tools and new physics are welcome.
+            </p>
+          </div>
+
+          <div class="hero-art">
+            <div class="hero-grid-pattern"></div>
+            <div class="hero-chip">
+              <div class="hero-chip-title">Quantum Device</div>
+              <div class="hero-chip-kv">
+                <span>Regime</span><span>GHz transport</span>
+              </div>
+              <div class="hero-chip-kv">
+                <span>Focus</span><span>Correlated 2D</span>
+              </div>
+              <div class="hero-chip-kv">
+                <span>Modes</span><span>Edges &amp; anyons?</span>
+              </div>
+            </div>
+            <div class="hero-orbit">
+              <div class="hero-orbit-inner">
+                Microwave<br/>eyes<br/>on matter
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research -->
+      <section id="research">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Research directions</h2>
+            <p class="section-sub">
+              We bring together advanced microwave techniques and designer 2D materials
+              to probe quantum matter in ways traditional DC transport cannot.
+            </p>
+          </div>
+
+          <div class="thrust-grid">
+            <article class="thrust-card">
+              <div class="thrust-tag">01 · Programmed phases</div>
+              <h3 class="thrust-name">Programmable quantum phases in 2D materials</h3>
+              <p class="thrust-body">
+                We use gates, strain, and engineered geometries to create and control
+                correlated and topological states in 2D materials — aiming for
+                “phase FPGAs” that go beyond moiré and allow flexible exploration
+                of quantum phase diagrams.
+              </p>
+            </article>
+
+            <article class="thrust-card">
+              <div class="thrust-tag">02 · GHz transport</div>
+              <h3 class="thrust-name">Microwave quantum transport</h3>
+              <p class="thrust-body">
+                We extend quantum transport into the GHz regime to access dynamics,
+                collective modes, and dissipation that are invisible in DC measurements,
+                from quantum Hall edges and fractional Chern insulators to
+                unconventional superconductivity.
+              </p>
+            </article>
+
+            <article class="thrust-card">
+              <div class="thrust-tag">03 · Imaging</div>
+              <h3 class="thrust-name">Microwave quantum imaging &amp; scanning probes</h3>
+              <p class="thrust-body">
+                We develop microwave and millimeter-wave scanning probes that map local
+                phases, domains, and edges with nanoscale resolution, providing a
+                “microwave view” of inhomogeneity and emergent order in quantum materials.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- People -->
+      <section id="people">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">People</h2>
+            <p class="section-sub">
+              The lab is in a ramp-up phase. Updated information about students,
+              postdocs, and visitors will appear here as the group forms.
+            </p>
+          </div>
+
+          <div class="simple-card">
+            <strong>Principal Investigator</strong>
+            <ul class="people-list">
+              <li><strong>Zhurun (Judy) Ji</strong> – Assistant Professor of Physics, MIT (starting 2025/26)</li>
+            </ul>
+            <p style="margin-top:0.8rem;">
+              We value collaborative, humane science and welcome people who are
+              excited to build new instruments, ask deep questions, and learn
+              together.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <section id="publications">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Publications</h2>
+          </div>
+
+          <div class="simple-card">
+            <p>
+              A curated list of selected publications will be added here.
+              For now, please see external profiles such as
+              <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+              or existing institutional pages.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-sub">
+              Prospective students and postdocs interested in the lab are encouraged
+              to reach out with a short note about their background and interests.
+            </p>
+          </div>
+
+          <div class="simple-card">
+            <p>
+              Email: <em>(your MIT email here)</em><br/>
+              Location: MIT Physics, Cambridge, MA
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      © 2025 Ji Quantum Lab · MIT
+    </footer>
+  </div>
+</body>
+</html>
