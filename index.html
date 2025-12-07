@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ji Quantum Lab</title>
+  <title>Ji Quantum Lab · Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -11,20 +11,16 @@
       --card: #ffffff;
       --accent: #f97316; /* warm orange */
       --accent-soft: rgba(249, 115, 22, 0.12);
-      --text-main: #1f2933;   /* warm-ish dark gray */
-      --text-soft: #6b7280;   /* gray-600 */
+      --text-main: #1f2933;
+      --text-soft: #6b7280;
       --border-subtle: #e5e7eb;
       --radius-lg: 1.1rem;
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -37,14 +33,9 @@
       animation: bgShift 22s ease-in-out infinite alternate;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      min-height: 100vh;
-    }
+    .page { min-height: 100vh; }
 
     .container {
       max-width: 1040px;
@@ -156,9 +147,7 @@
     }
 
     @media (max-width: 880px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .eyebrow {
@@ -175,9 +164,7 @@
       margin: 0 0 0.65rem;
     }
 
-    .hero-title span {
-      color: var(--accent);
-    }
+    .hero-title span { color: var(--accent); }
 
     .hero-tagline {
       font-size: 1.0rem;
@@ -190,10 +177,30 @@
       font-size: 0.86rem;
       color: var(--text-soft);
       max-width: 32rem;
+      margin-bottom: 1.2rem;
     }
 
-    .hero-note strong {
-      color: var(--text-main);
+    .hero-note strong { color: var(--text-main); }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hero-link-btn {
+      font-size: 0.85rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #f97316;
+      background: #fff7ed;
+      color: #9a3412;
+      font-weight: 500;
+    }
+
+    .hero-link-secondary {
+      font-size: 0.85rem;
+      color: var(--text-soft);
     }
 
     /* Hero art */
@@ -253,9 +260,7 @@
       margin-top: 0.08rem;
     }
 
-    .hero-chip-kv span:first-child {
-      font-size: 0.7rem;
-    }
+    .hero-chip-kv span:first-child { font-size: 0.7rem; }
 
     .hero-chip-kv span:last-child {
       font-weight: 600;
@@ -293,9 +298,7 @@
     }
 
     /* Sections */
-    section {
-      padding: 2.2rem 0 0.4rem;
-    }
+    section { padding: 2.2rem 0 0.4rem; }
 
     .section-header {
       display: flex;
@@ -317,6 +320,17 @@
     }
 
     /* News */
+    .simple-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
     .news-list {
       list-style: none;
       margin: 0.4rem 0 0;
@@ -332,9 +346,7 @@
       border-bottom: 1px dashed #fcd9b6;
     }
 
-    .news-item:last-child {
-      border-bottom: none;
-    }
+    .news-item:last-child { border-bottom: none; }
 
     .news-date {
       font-size: 0.8rem;
@@ -343,89 +355,7 @@
       flex-shrink: 0;
     }
 
-    .news-text {
-      flex: 1;
-    }
-
-    /* Research cards */
-    .thrust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.3rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .thrust-card {
-      background: linear-gradient(135deg, #ffffff, #fff7ed);
-      border-radius: var(--radius-lg);
-      padding: 1.3rem;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 14px 30px rgba(148, 92, 43, 0.08);
-      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out, background 0.14s ease-out;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .thrust-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.16s ease-out;
-      pointer-events: none;
-    }
-
-    .thrust-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 45px rgba(148, 92, 43, 0.15);
-      border-color: rgba(249, 115, 22, 0.7);
-    }
-
-    .thrust-card:hover::before {
-      opacity: 1;
-    }
-
-    .thrust-tag {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-
-    .thrust-name {
-      font-size: 1.02rem;
-      margin: 0 0 0.35rem;
-    }
-
-    .thrust-body {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    /* People / Publications / Contact cards */
-    .simple-card {
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 1.5rem;
-      box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .people-list {
-      list-style: none;
-      padding: 0;
-      margin: 0.8rem 0 0;
-      font-size: 0.9rem;
-    }
-
-    .people-list li {
-      margin-bottom: 0.3rem;
-    }
+    .news-text { flex: 1; }
 
     /* Footer */
     .site-footer {
@@ -437,40 +367,22 @@
       text-align: center;
     }
 
-    /* Background animation */
+    /* Animations */
     @keyframes bgShift {
-      0% {
-        background-position: 0% 0%;
-      }
-      50% {
-        background-position: 40% 60%;
-      }
-      100% {
-        background-position: 80% 20%;
-      }
+      0% { background-position: 0% 0%; }
+      50% { background-position: 40% 60%; }
+      100% { background-position: 80% 20%; }
     }
 
-    /* Fade-up animation for hero + cards */
     .hero,
-    .thrust-card,
     .simple-card {
       opacity: 0;
       transform: translateY(10px);
       animation: fadeUp 0.7s ease-out forwards;
     }
 
-    .thrust-card:nth-child(1) {
-      animation-delay: 0.25s;
-    }
-    .thrust-card:nth-child(2) {
-      animation-delay: 0.35s;
-    }
-    .thrust-card:nth-child(3) {
-      animation-delay: 0.45s;
-    }
-
     .simple-card {
-      animation-delay: 0.4s;
+      animation-delay: 0.25s;
     }
 
     @keyframes fadeUp {
@@ -484,7 +396,6 @@
       }
     }
 
-    /* Orbit glow */
     @keyframes orbitPulse {
       0% {
         box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55);
@@ -513,11 +424,9 @@
           </div>
         </div>
         <nav class="nav">
-          <a href="#news">News</a>
-          <a href="#research">Research</a>
-          <a href="#people">People</a>
-          <a href="#publications">Publications</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="people.html">People</a>
         </nav>
       </div>
     </header>
@@ -541,6 +450,10 @@
               <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026.
               Students and postdocs interested in building new tools and new physics are very welcome.
             </p>
+            <div class="hero-links">
+              <a class="hero-link-btn" href="research.html">See research directions →</a>
+              <a class="hero-link-secondary" href="people.html">Meet the people →</a>
+            </div>
           </div>
 
           <div class="hero-art">
@@ -600,115 +513,6 @@
                 </div>
               </li>
             </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Research -->
-      <section id="research">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Research directions</h2>
-            <p class="section-sub">
-              We bring together advanced microwave techniques and designer 2D materials
-              to probe quantum matter in ways traditional DC transport cannot.
-            </p>
-          </div>
-
-          <div class="thrust-grid">
-            <article class="thrust-card">
-              <div class="thrust-tag">01 · Programmed phases</div>
-              <h3 class="thrust-name">Programmable quantum phases in 2D materials</h3>
-              <p class="thrust-body">
-                We use gates, strain, and engineered geometries to create and control
-                correlated and topological states in 2D materials — aiming for
-                “phase FPGAs” that go beyond moiré and allow flexible exploration
-                of quantum phase diagrams.
-              </p>
-            </article>
-
-            <article class="thrust-card">
-              <div class="thrust-tag">02 · GHz transport</div>
-              <h3 class="thrust-name">Microwave quantum transport</h3>
-              <p class="thrust-body">
-                We extend quantum transport into the GHz regime to access dynamics,
-                collective modes, and dissipation that are invisible in DC measurements,
-                from quantum Hall edges and fractional Chern insulators to
-                unconventional superconductivity.
-              </p>
-            </article>
-
-            <article class="thrust-card">
-              <div class="thrust-tag">03 · Imaging</div>
-              <h3 class="thrust-name">Microwave quantum imaging &amp; scanning probes</h3>
-              <p class="thrust-body">
-                We develop microwave and millimeter-wave scanning probes that map local
-                phases, domains, and edges with nanoscale resolution, providing a
-                “microwave view” of inhomogeneity and emergent order in quantum materials.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- People -->
-      <section id="people">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">People</h2>
-            <p class="section-sub">
-              The lab is in a ramp-up phase. Updated information about students,
-              postdocs, and visitors will appear here as the group forms.
-            </p>
-          </div>
-
-          <div class="simple-card">
-            <strong>Principal Investigator</strong>
-            <ul class="people-list">
-              <li><strong>Zhurun (Judy) Ji</strong> – Assistant Professor of Physics, MIT (starting 2025/26)</li>
-            </ul>
-            <p style="margin-top:0.8rem;">
-              We value collaborative, humane science and welcome people who are
-              excited to build new instruments, ask deep questions, and learn together.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Publications -->
-      <section id="publications">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Publications</h2>
-          </div>
-
-          <div class="simple-card">
-            <p>
-              A curated list of selected publications will be added here.
-              For now, please see external profiles such as
-              <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
-              or existing institutional pages.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Contact</h2>
-            <p class="section-sub">
-              Prospective students and postdocs interested in the lab are encouraged
-              to reach out with a short note about their background and interests.
-            </p>
-          </div>
-
-          <div class="simple-card">
-            <p>
-              Email: <em>(your MIT email here)</em><br/>
-              Location: MIT Physics, Cambridge, MA
-            </p>
           </div>
         </div>
       </section>
