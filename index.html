@@ -223,8 +223,6 @@
       overflow: hidden;
     }
 
-    /* (grid background removed) */
-
     .mw-label-small {
       position: absolute;
       top: 10%;
@@ -279,12 +277,12 @@
       filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
     }
 
-    /* Meander circuit – rounded corners */
+    /* Meander circuit with MW source */
     .mw-meander {
       position: absolute;
       bottom: 20%;
       left: 12%;
-      width: 150px;
+      width: 170px;
       height: 80px;
       cursor: grab;
       z-index: 4;
@@ -315,6 +313,20 @@
     .mw-meander.active path {
       stroke: #e2723f;
       filter: drop-shadow(0 0 14px rgba(226, 114, 63, 0.9));
+    }
+
+    .mw-source-body {
+      fill: #fdf5ee;
+      stroke: #c26a3d;
+      stroke-width: 2;
+    }
+
+    .mw-source-text {
+      font-size: 10px;
+      fill: #6c3b21;
+      font-weight: 600;
+      text-anchor: middle;
+      dominant-baseline: middle;
     }
 
     /* 2D material sample */
@@ -555,18 +567,21 @@
               <div class="mw-tip-body"></div>
             </div>
 
-            <!-- Draggable meander circuit -->
+            <!-- Draggable meander circuit with MW source -->
             <div class="mw-meander" id="meander">
-              <svg viewBox="0 0 150 80" aria-hidden="true" focusable="false">
+              <svg viewBox="0 0 200 80" aria-hidden="true" focusable="false">
+                <!-- MW source block -->
+                <rect x="10" y="26" width="42" height="28" rx="6" ry="6"
+                      class="mw-source-body" />
+                <text x="31" y="40" class="mw-source-text">MW</text>
+
+                <!-- Straight line + semicircle + straight line + semicircle -->
                 <path d="
-                  M 15 20
-                  Q 35 20 40 30
-                  Q 45 40 45 50
-                  Q 45 60 60 60
-                  Q 75 60 80 50
-                  Q 85 40 85 30
-                  Q 85 20 100 20
-                  Q 120 20 135 28
+                  M 52 40
+                  L 95 40
+                  A 14 14 0 0 1 123 40
+                  L 152 40
+                  A 14 14 0 0 0 180 40
                 " />
               </svg>
             </div>
