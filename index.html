@@ -72,4 +72,570 @@
       align-items: center;
       justify-content: center;
       font-size: 0.78rem;
-      font-weight: 600
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      background: #fdf5ee;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 1.18rem;
+      line-height: 1.1;
+    }
+
+    .logo-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-top: 0.08rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.1rem;
+      font-size: 0.86rem;
+    }
+
+    .nav a {
+      position: relative;
+      color: var(--text-soft);
+      padding-bottom: 0.1rem;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.16rem;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.16s ease-out;
+    }
+
+    .nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+      .nav {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 2.8rem 0 2.0rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      line-height: 1.12;
+      margin: 0 0 0.65rem;
+    }
+
+    .hero-title span { color: var(--accent); }
+
+    .hero-tagline {
+      font-size: 1.0rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-note {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-note strong { color: var(--text-main); }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hero-link-btn {
+      font-size: 0.85rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: #fdf5ee;
+      color: #7b4122;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hero-link-btn:hover {
+      background: #f8ebdd;
+    }
+
+    /* Hero art */
+    .hero-art {
+      position: relative;
+      height: 260px;
+      border-radius: 1.3rem;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(194, 106, 61, 0.16), transparent 60%),
+        #ffffff;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-grid-pattern {
+      position: absolute;
+      inset: 14%;
+      border-radius: 1rem;
+      border: 1px solid rgba(194, 106, 61, 0.18);
+      background-image:
+        linear-gradient(to right, rgba(194, 106, 61, 0.16) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(194, 106, 61, 0.07) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.85;
+    }
+
+    /* Tip (scanning tip) */
+    .mw-tip {
+      position: absolute;
+      top: 16%;
+      left: 24%;
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 34px solid var(--accent);
+      filter: drop-shadow(0 6px 8px rgba(148, 92, 43, 0.25));
+    }
+
+    .mw-tip-base {
+      position: absolute;
+      top: 22%;
+      left: 20.5%;
+      width: 56px;
+      height: 16px;
+      border-radius: 999px;
+      background: #fdf5ee;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Circuit to the sheet */
+    .mw-circuit {
+      position: absolute;
+      left: 4%;
+      bottom: 32%;
+      width: 46%;
+      height: 40px;
+    }
+
+    .mw-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #e4d4c3, var(--accent));
+      border-radius: 999px;
+      transform: translateY(-50%);
+    }
+
+    .mw-node {
+      position: absolute;
+      top: 50%;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--accent);
+      transform: translate(-50%, -50%);
+    }
+
+    .mw-node-1 { left: 18%; }
+    .mw-node-2 { left: 48%; }
+
+    .mw-pulse {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(194, 106, 61, 0.7);
+      transform: translate(-50%, -50%);
+      animation: pulseTravel 2.4s linear infinite;
+    }
+
+    @keyframes pulseTravel {
+      0% {
+        left: 0%;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      80% {
+        left: 100%;
+        opacity: 1;
+      }
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+    }
+
+    /* Sinusoidal microwave wave between tip and sheet (inline SVG) */
+    .mw-sine {
+      position: absolute;
+      left: 32%;
+      top: 34%;
+      width: 40%;
+      height: 46px;
+      overflow: visible;
+    }
+
+    .mw-sine path {
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-dasharray: 10 12;  /* dashed so phase motion is visible */
+      animation: sineTravel 2.5s linear infinite;
+    }
+
+    @keyframes sineTravel {
+      0% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        stroke-dashoffset: -44;
+      }
+    }
+
+    /* Sheet (2D material) */
+    .mw-sheet {
+      position: absolute;
+      right: 8%;
+      bottom: 16%;
+      width: 34%;
+      height: 76px;
+      border-radius: 1rem;
+      background:
+        linear-gradient(135deg, rgba(194, 106, 61, 0.14), rgba(120, 140, 170, 0.06)),
+        repeating-linear-gradient(
+          45deg,
+          rgba(15, 23, 42, 0.05),
+          rgba(15, 23, 42, 0.05) 2px,
+          transparent 2px,
+          transparent 6px
+        );
+      border: 1px solid rgba(194, 106, 61, 0.55);
+      box-shadow: 0 10px 26px rgba(148, 92, 43, 0.15);
+      overflow: hidden;
+    }
+
+    .mw-sheet-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 40%, rgba(249, 233, 215, 0.8), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      animation: sheetGlow 3.2s ease-in-out infinite alternate;
+    }
+
+    @keyframes sheetGlow {
+      0% {
+        opacity: 0.4;
+        transform: translateX(-4px);
+      }
+      100% {
+        opacity: 0.9;
+        transform: translateX(4px);
+      }
+    }
+
+    .mw-sheet-label {
+      position: absolute;
+      right: 10%;
+      bottom: 15%;
+      font-size: 0.7rem;
+      background: rgba(253, 247, 239, 0.98);
+      border-radius: 999px;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid #e3d6c6;
+      color: #7b4122;
+      box-shadow: 0 8px 18px rgba(148, 92, 43, 0.18);
+    }
+
+    .mw-label-small {
+      position: absolute;
+      top: 10%;
+      left: 6%;
+      font-size: 0.7rem;
+      padding: 0.24rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(253, 247, 239, 0.96);
+      border: 1px solid rgba(227, 214, 198, 0.9);
+      color: #7b4122;
+    }
+
+    /* Sections */
+    section { padding: 2.2rem 0 0.4rem; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      max-width: 26rem;
+    }
+
+    /* News */
+    .simple-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .news-list {
+      list-style: none;
+      margin: 0.4rem 0 0;
+      padding: 0;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .news-item {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed #e3d6c6;
+    }
+
+    .news-item:last-child { border-bottom: none; }
+
+    .news-date {
+      font-size: 0.8rem;
+      color: #8b7354;
+      min-width: 5.1rem;
+      flex-shrink: 0;
+    }
+
+    .news-text { flex: 1; }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 2rem;
+      padding: 1.4rem 0 1.8rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    /* Animations */
+    .hero,
+    .simple-card {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.7s ease-out forwards;
+    }
+
+    .simple-card {
+      animation-delay: 0.25s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">JiQL</div>
+          <div>
+            <div class="logo-text-main">Ji Quantum Lab</div>
+            <div class="logo-text-sub">MIT Physics · Quantum materials in the microwave world</div>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="people.html">People</a>
+          <a href="publications.html">Publications</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Ji Quantum Lab · MIT</div>
+            <h1 class="hero-title">
+              Seeing quantum materials<br />
+              in the microwave world.
+            </h1>
+            <p class="hero-tagline">
+              We build microwave transport and scanning experiments to explore
+              correlated and topological phases in 2D materials, and to learn how
+              to program new quantum states of matter.
+            </p>
+            <p class="hero-note">
+              <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026.
+              Students and postdocs interested in building new tools and new physics are very welcome.
+            </p>
+            <div class="hero-links">
+              <a class="hero-link-btn" href="research.html">See research directions →</a>
+              <a class="hero-link-btn" href="people.html">Meet the people →</a>
+            </div>
+          </div>
+
+          <div class="hero-art">
+            <div class="hero-grid-pattern"></div>
+
+            <!-- labels -->
+            <div class="mw-label-small">Microwave circuit</div>
+
+            <!-- tip and base -->
+            <div class="mw-tip"></div>
+            <div class="mw-tip-base"></div>
+
+            <!-- circuit -->
+            <div class="mw-circuit">
+              <div class="mw-line"></div>
+              <div class="mw-node mw-node-1"></div>
+              <div class="mw-node mw-node-2"></div>
+              <div class="mw-pulse"></div>
+            </div>
+
+            <!-- sinusoidal microwave wave between tip and sheet -->
+            <svg class="mw-sine" viewBox="0 0 160 40" preserveAspectRatio="none">
+              <!-- approximate sinusoid across the device -->
+              <path d="M0 20
+                       Q 10 5 20 20
+                       T 40 20
+                       T 60 20
+                       T 80 20
+                       T 100 20
+                       T 120 20
+                       T 140 20
+                       T 160 20" />
+            </svg>
+
+            <!-- sheet -->
+            <div class="mw-sheet">
+              <div class="mw-sheet-glow"></div>
+            </div>
+            <div class="mw-sheet-label">2D quantum material</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section id="news">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">News &amp; updates</h2>
+            <p class="section-sub">
+              A few snapshots of what we are building and planning as the lab takes shape.
+            </p>
+          </div>
+
+          <div class="simple-card">
+            <ul class="news-list">
+              <li class="news-item">
+                <div class="news-date">Dec&nbsp;2025</div>
+                <div class="news-text">
+                  Ji Quantum Lab website goes live. We are preparing for the official
+                  launch of the lab at MIT and beginning to recruit students and postdocs.
+                </div>
+              </li>
+              <li class="news-item">
+                <div class="news-date">Fall&nbsp;2025</div>
+                <div class="news-text">
+                  Planning our first generation of microwave quantum transport and
+                  scanning experiments on 2D materials. More details to come.
+                </div>
+              </li>
+              <li class="news-item">
+                <div class="news-date">Ongoing</div>
+                <div class="news-text">
+                  If you are interested in microwave techniques, 2D materials,
+                  or programmable quantum phases, you are warmly encouraged to reach out.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      © 2025 Ji Quantum Lab · MIT
+    </footer>
+  </div>
+</body>
+</html>
