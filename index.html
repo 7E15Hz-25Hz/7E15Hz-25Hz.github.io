@@ -157,8 +157,6 @@
       color: var(--text-main);
     }
 
-    .hero-title span { color: var(--accent); }
-
     .hero-tagline {
       font-size: 1.0rem;
       color: var(--text-soft);
@@ -249,7 +247,7 @@
       z-index: 3;
     }
 
-    /* Draggable tip – narrower and longer */
+    /* Draggable tip – narrower and longer, pointing down */
     .mw-tip-container {
       position: absolute;
       top: 16%;
@@ -277,79 +275,62 @@
       filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
     }
 
-    /* Meander circuit with MW source */
-    /* Meander resonator group (draggable) */
-.mw-meander-group {
-  position: absolute;
-  left: 6%;
-  bottom: 10%;
-  width: 230px;
-  height: 120px;
-  cursor: grab;
-}
-
-.mw-meander-group:active {
-  cursor: grabbing;
-}
-
-/* small microwave source block labelled "MW" */
-.mw-source {
-  position: absolute;
-  left: 0;
-  top: 45px;
-  width: 34px;
-  height: 22px;
-  border-radius: 6px;
-  border: 1px solid var(--accent);
-  background: #fdf5ee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.68rem;
-  color: #7b3f22;
-  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.12);
-}
-
-/* serpentine resonator */
-.mw-meander {
-  position: absolute;
-  left: 40px;
-  top: 14px;
-  width: 180px;
-  height: 90px;
-}
-
-.mw-meander path {
-  fill: none;
-  stroke: #22a36f;               /* green like the reference image */
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.mw-meander circle {
-  fill: #22a36f;
-}
-
-/* “sample responding” highlight state (used by JS) */
-.mw-meander-hot path {
-  stroke: #f97316;
-  filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.9));
-}
-
-
-    .mw-source-body {
-      fill: #fdf5ee;
-      stroke: #c26a3d;
-      stroke-width: 2;
+    /* Draggable meander + MW source */
+    .mw-meander-group {
+      position: absolute;
+      left: 6%;
+      bottom: 10%;
+      width: 230px;
+      height: 120px;
+      cursor: grab;
+      z-index: 3;
     }
 
-    .mw-source-text {
-      font-size: 10px;
-      fill: #6c3b21;
-      font-weight: 600;
-      text-anchor: middle;
-      dominant-baseline: middle;
+    .mw-meander-group:active {
+      cursor: grabbing;
+    }
+
+    .mw-source {
+      position: absolute;
+      left: 0;
+      top: 45px;
+      width: 34px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      background: #fdf5ee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      color: #7b3f22;
+      box-shadow: 0 6px 12px rgba(15, 23, 42, 0.12);
+    }
+
+    .mw-meander {
+      position: absolute;
+      left: 40px;
+      top: 14px;
+      width: 180px;
+      height: 90px;
+    }
+
+    .mw-meander path {
+      fill: none;
+      stroke: #22a36f;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .mw-meander circle {
+      fill: #22a36f;
+    }
+
+    /* “sample responding” highlight state */
+    .mw-meander-group.active .mw-meander path {
+      stroke: #f97316;
+      filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.9));
     }
 
     /* 2D material sample */
@@ -464,7 +445,7 @@
       max-width: 32rem;
     }
 
-    /* News – simpler lab style */
+    /* News – simple timeline style */
     .simple-card {
       background: transparent;
       border-radius: 0;
@@ -544,7 +525,7 @@
           <div class="logo-mark">JiQL</div>
           <div>
             <div class="logo-text-main">Ji Quantum Lab</div>
-            <div class="logo-text-sub">MIT Physics · Quantum materials in the microwave world</div>
+            <div class="logo-text-sub">Quantum materials in the microwave world</div>
           </div>
         </div>
         <nav class="nav">
@@ -591,28 +572,24 @@
             </div>
 
             <!-- Draggable meander circuit with MW source -->
-            <div class="mw-meander-group" id="mw-meander-group">
-  <!-- microwave source block -->
-  <div class="mw-source">MW</div>
-
-  <!-- serpentine meander, similar to the reference figure -->
-  <svg class="mw-meander" viewBox="0 0 160 90" aria-hidden="true">
-    <path d="
-      M 6 18
-      H 120
-      Q 132 18 132 30
-      V 36
-      Q 132 48 120 48
-      H 24
-      Q 12 48 12 60
-      V 66
-      Q 12 78 24 78
-      H 140
-    " />
-    <!-- coupling pad at the end -->
-    <circle cx="140" cy="78" r="4" />
-  </svg>
-</div>
+            <div class="mw-meander-group" id="meander">
+              <div class="mw-source">MW</div>
+              <svg class="mw-meander" viewBox="0 0 160 90" aria-hidden="true">
+                <path d="
+                  M 6 18
+                  H 120
+                  Q 132 18 132 30
+                  V 36
+                  Q 132 48 120 48
+                  H 24
+                  Q 12 48 12 60
+                  V 66
+                  Q 12 78 24 78
+                  H 140
+                " />
+                <circle cx="140" cy="78" r="4" />
+              </svg>
+            </div>
 
             <!-- Sample -->
             <div class="mw-sample" id="sample">
@@ -800,7 +777,7 @@
         }
       });
 
-      // Initial state
+      // Initial highlight state
       checkCircuitSample();
     });
   </script>
