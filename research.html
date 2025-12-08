@@ -4,19 +4,18 @@
   <meta charset="UTF-8" />
   <title>Ji Quantum Lab · Research</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- same style as index.html -->
-   <style>
+  <style>
     :root {
-      --bg: #fffbf2;
+      --bg: #f5f3ef;              /* warm, calm background */
       --bg-soft: #ffffff;
       --card: #ffffff;
-      --accent: #f97316; /* warm orange */
-      --accent-soft: rgba(249, 115, 22, 0.12);
+      --accent: #c26a3d;          /* muted copper */
+      --accent-soft: rgba(194, 106, 61, 0.15);
       --text-main: #1f2933;
       --text-soft: #6b7280;
-      --border-subtle: #e5e7eb;
+      --border-subtle: #e2e0da;
       --radius-lg: 1.1rem;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.06);
     }
 
     * { box-sizing: border-box; }
@@ -26,12 +25,9 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, #ffedd5 0, #fffbf2 40%, #ffffff 100%);
+      background: var(--bg);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
-      background-size: 140% 140%;
-      animation: bgShift 22s ease-in-out infinite alternate;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -50,8 +46,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(14px);
-      background: rgba(255, 250, 240, 0.92);
-      border-bottom: 1px solid #fed7aa;
+      background: rgba(245, 243, 239, 0.96);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .header-inner {
@@ -79,17 +75,19 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       color: var(--accent);
-      background: #fff7ed;
+      background: #fdf5ee;
     }
 
     .logo-text-main {
-      font-weight: 600;
-      font-size: 0.96rem;
+      font-weight: 700;
+      font-size: 1.18rem;
+      line-height: 1.1;
     }
 
     .logo-text-sub {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       color: var(--text-soft);
+      margin-top: 0.08rem;
     }
 
     .nav {
@@ -140,17 +138,6 @@
       padding: 2.8rem 0 2.0rem;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 2.2rem;
-      align-items: center;
-    }
-
-    @media (max-width: 880px) {
-      .hero-grid { grid-template-columns: minmax(0, 1fr); }
-    }
-
     .eyebrow {
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -160,8 +147,8 @@
     }
 
     .hero-title {
-      font-size: 2.3rem;
-      line-height: 1.12;
+      font-size: 2.1rem;
+      line-height: 1.18;
       margin: 0 0 0.65rem;
     }
 
@@ -170,133 +157,18 @@
     .hero-tagline {
       font-size: 1.0rem;
       color: var(--text-soft);
-      max-width: 32rem;
+      max-width: 38rem;
       margin-bottom: 0.9rem;
     }
 
     .hero-note {
       font-size: 0.86rem;
       color: var(--text-soft);
-      max-width: 32rem;
+      max-width: 38rem;
       margin-bottom: 1.2rem;
     }
 
     .hero-note strong { color: var(--text-main); }
-
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .hero-link-btn {
-      font-size: 0.85rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid #f97316;
-      background: #fff7ed;
-      color: #9a3412;
-      font-weight: 500;
-    }
-
-    .hero-link-secondary {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-    }
-
-    /* Hero art */
-    .hero-art {
-      position: relative;
-      height: 240px;
-      border-radius: 1.3rem;
-      background: radial-gradient(circle at 20% 10%, rgba(248, 171, 84, 0.2), transparent 55%),
-                  radial-gradient(circle at 80% 90%, rgba(244, 114, 182, 0.16), transparent 50%),
-                  #ffffff;
-      border: 1px solid #fed7aa;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-    }
-
-    .hero-grid-pattern {
-      position: absolute;
-      inset: 16%;
-      border-radius: 1rem;
-      border: 1px solid rgba(248, 171, 84, 0.25);
-      background-image:
-        linear-gradient(to right, rgba(248, 171, 84, 0.22) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(248, 171, 84, 0.12) 1px, transparent 1px);
-      background-size: 26px 26px;
-      opacity: 0.9;
-    }
-
-    .hero-chip {
-      position: absolute;
-      top: 18%;
-      left: 14%;
-      width: 150px;
-      height: 78px;
-      border-radius: 0.85rem;
-      background: #fffaf5;
-      border: 1px solid #fed7aa;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0.55rem 0.8rem;
-      font-size: 0.72rem;
-      color: var(--text-soft);
-      box-shadow: 0 10px 24px rgba(148, 92, 43, 0.18);
-    }
-
-    .hero-chip-title {
-      font-size: 0.78rem;
-      color: var(--accent);
-      margin-bottom: 0.1rem;
-      font-weight: 600;
-    }
-
-    .hero-chip-kv {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-top: 0.08rem;
-    }
-
-    .hero-chip-kv span:first-child { font-size: 0.7rem; }
-
-    .hero-chip-kv span:last-child {
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .hero-orbit {
-      position: absolute;
-      right: 12%;
-      bottom: 14%;
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      border: 1px dashed rgba(248, 171, 84, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-orbit-inner {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      border: 1px solid rgba(249, 115, 22, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: var(--accent);
-      text-align: center;
-      padding: 0.3rem;
-      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
-      animation: orbitPulse 3s ease-in-out infinite;
-      background: #fff7ed;
-    }
 
     /* Sections */
     section { padding: 2.2rem 0 0.4rem; }
@@ -317,50 +189,70 @@
     .section-sub {
       font-size: 0.9rem;
       color: var(--text-soft);
-      max-width: 26rem;
+      max-width: 32rem;
     }
 
-    /* News */
-    .simple-card {
-      background: #ffffff;
+    /* Thrust grid & cards */
+    .thrust-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 880px) {
+      .thrust-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .thrust-card {
+      background: var(--card);
       border-radius: var(--radius-lg);
-      padding: 1.25rem;
+      padding: 1.2rem 1.3rem 1.1rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .thrust-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .thrust-name {
+      margin: 0 0 0.25rem;
+      font-size: 1.0rem;
+      color: var(--text-main);
+    }
+
+    .thrust-body {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Generic card */
+    .simple-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.4rem;
       border: 1px solid var(--border-subtle);
       margin-bottom: 1.5rem;
-      box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
+      box-shadow: var(--shadow-soft);
       font-size: 0.9rem;
       color: var(--text-soft);
     }
-
-    .news-list {
-      list-style: none;
-      margin: 0.4rem 0 0;
-      padding: 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .news-item {
-      display: flex;
-      gap: 0.6rem;
-      padding: 0.45rem 0;
-      border-bottom: 1px dashed #fcd9b6;
-    }
-
-    .news-item:last-child { border-bottom: none; }
-
-    .news-date {
-      font-size: 0.8rem;
-      color: #9a7b4f;
-      min-width: 5.1rem;
-      flex-shrink: 0;
-    }
-
-    .news-text { flex: 1; }
 
     /* Footer */
     .site-footer {
-      border-top: 1px solid #fed7aa;
+      border-top: 1px solid var(--border-subtle);
       margin-top: 2rem;
       padding: 1.4rem 0 1.8rem;
       font-size: 0.8rem;
@@ -369,20 +261,20 @@
     }
 
     /* Animations */
-    @keyframes bgShift {
-      0% { background-position: 0% 0%; }
-      50% { background-position: 40% 60%; }
-      100% { background-position: 80% 20%; }
-    }
-
     .hero,
-    .simple-card {
+    .simple-card,
+    .thrust-card {
       opacity: 0;
       transform: translateY(10px);
       animation: fadeUp 0.7s ease-out forwards;
     }
 
-    .simple-card {
+    .simple-card,
+    .thrust-card:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .thrust-card:nth-child(3) {
       animation-delay: 0.25s;
     }
 
@@ -394,21 +286,6 @@
       to {
         opacity: 1;
         transform: translateY(0);
-      }
-    }
-
-    @keyframes orbitPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 16px 9px rgba(249, 115, 22, 0.18);
-        transform: scale(1.03);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
-        transform: scale(1);
       }
     }
   </style>
@@ -435,6 +312,7 @@
     </header>
 
     <main>
+      <!-- Hero -->
       <section class="hero">
         <div class="container">
           <div class="eyebrow">Research</div>
@@ -453,6 +331,7 @@
         </div>
       </section>
 
+      <!-- Main directions -->
       <section>
         <div class="container">
           <div class="section-header">
@@ -463,24 +342,24 @@
             </p>
           </div>
 
-          <div class="thrust-grid" style="margin-bottom:0;">
+          <div class="thrust-grid">
             <!-- Thrust 1 -->
             <article class="thrust-card">
               <div class="thrust-tag">01 · Programmed phases</div>
               <h3 class="thrust-name">Programmable quantum phases in 2D materials</h3>
               <div style="display:flex; flex-direction:column; gap:0.7rem;">
-                <div style="width:100%; aspect-ratio:16/9; border-radius:0.9rem; background:#fff7ed; border:1px solid #fed7aa; overflow:hidden;">
+                <div style="width:100%; aspect-ratio:16/9; border-radius:0.9rem; background:#fdf5ee; border:1px solid var(--border-subtle); overflow:hidden;">
                   <img src="images/thrust-programmable.jpg" alt="Programmable quantum phases in 2D materials"
                        style="width:100%; height:100%; object-fit:cover;">
                 </div>
-                <p class="thrust-body" style="font-size:0.9rem; color:var(--text-soft);">
+                <p class="thrust-body">
                   We treat 2D materials as platforms where phases can be written and rewritten.
                   Using local gates, engineered edges, strain, and tailored device geometries,
                   we explore how to stabilize and manipulate correlated and topological states –
                   including fractional Chern insulators, unconventional superconductors, and
                   potentially anyonic excitations – without relying only on a specific moiré angle.
                 </p>
-                <p class="thrust-body" style="font-size:0.9rem; color:var(--text-soft);">
+                <p class="thrust-body">
                   <strong>For students:</strong> This thrust combines device design, nanofabrication,
                   and conceptual thinking about phase diagrams and effective models.
                 </p>
@@ -492,17 +371,17 @@
               <div class="thrust-tag">02 · GHz transport</div>
               <h3 class="thrust-name">Microwave quantum transport</h3>
               <div style="display:flex; flex-direction:column; gap:0.7rem;">
-                <div style="width:100%; aspect-ratio:16/9; border-radius:0.9rem; background:#fff7ed; border:1px solid #fed7aa; overflow:hidden;">
+                <div style="width:100%; aspect-ratio:16/9; border-radius:0.9rem; background:#fdf5ee; border:1px solid var(--border-subtle); overflow:hidden;">
                   <img src="images/thrust-transport.jpg" alt="Microwave quantum transport"
                        style="width:100%; height:100%; object-fit:cover;">
                 </div>
-                <p class="thrust-body" style="font-size:0.9rem; color:var(--text-soft);">
+                <p class="thrust-body">
                   Traditional transport focuses on DC or low-frequency response. We extend
                   transport into the GHz regime to probe dynamics and collective modes that
                   are invisible in DC measurements: edge magnetoplasmons, chiral and helical
                   edge channels, superconducting phase dynamics, and other emergent excitations.
                 </p>
-                <p class="thrust-body" style="font-size:0.9rem; color:var(--text-soft);">
+                <p class="thrust-body">
                   <strong>For students:</strong> You will design and measure microwave circuits
                   in dilution refrigerators, interpret complex spectra, and connect them to
                   real many-body physics.
@@ -515,17 +394,17 @@
               <div class="thrust-tag">03 · Imaging</div>
               <h3 class="thrust-name">Microwave imaging &amp; scanning probes</h3>
               <div style="display:flex; flex-direction:column; gap:0.7rem;">
-                <div style="width:100%; aspect-ratio:16/9; border-radius:0.9rem; background:#fff7ed; border:1px solid #fed7aa; overflow:hidden;">
+                <div style="width:100%; aspect-ratio:16/9; border-radius:0.9rem; background:#fdf5ee; border:1px solid var(--border-subtle); overflow:hidden;">
                   <img src="images/thrust-imaging.jpg" alt="Microwave imaging and scanning probes"
                        style="width:100%; height:100%; object-fit:cover;">
                 </div>
-                <p class="thrust-body" style="font-size:0.9rem; color:var(--text-soft);">
+                <p class="thrust-body">
                   Real materials are not perfectly homogeneous. We develop microwave and
                   millimeter-wave scanning probes that can map out local phases, domains, and
                   edges with high spatial resolution – giving a “microwave view” of inhomogeneity,
                   domain structure, and emergent order in 2D materials and devices.
                 </p>
-                <p class="thrust-body" style="font-size:0.9rem; color:var(--text-soft);">
+                <p class="thrust-body">
                   <strong>For students:</strong> This thrust is ideal if you love instrumentation:
                   building and aligning microscopes, designing tips and resonators, and
                   transforming raw signals into images of quantum structure.
@@ -542,13 +421,13 @@
           <div class="section-header">
             <h2 class="section-title">How you might fit into this picture</h2>
             <p class="section-sub">
-              We welcome people with different backgrounds – transport, AMO-style thinking,
-              nanofabrication, microwaves, or theory – who want to learn from each other.
+              We welcome people with different backgrounds: transport, AMO-style thinking,
+              nanofabrication, microwaves, theory, or AI, who want to learn from each other.
             </p>
           </div>
 
           <div class="simple-card">
-            <ul style="margin:0; padding-left:1.1rem; font-size:0.9rem; color:var(--text-soft);">
+            <ul style="margin:0; padding-left:1.1rem;">
               <li style="margin-bottom:0.4rem;">
                 If you love <strong>building</strong> things, you might lead the development
                 of a new cryogenic microwave setup or scanning probe.
@@ -576,5 +455,4 @@
     </footer>
   </div>
 </body>
-
 </html>
