@@ -80,7 +80,7 @@
 
     .logo-text-main {
       font-weight: 750;
-      font-size: 1.4rem;   /* larger lab name in header */
+      font-size: 1.4rem;
       line-height: 1.1;
     }
 
@@ -149,28 +149,15 @@
       .hero-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
-    .eyebrow {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
     .hero-title {
-      font-size: 2.9rem;  /* big lab name */
-      line-height: 1.12;
-      margin: 0 0 0.35rem;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      margin: 0 0 0.65rem;
+      font-weight: 500;
+      color: var(--text-main);
     }
 
     .hero-title span { color: var(--accent); }
-
-    /* smaller line with the phrase */
-    .hero-subtitle {
-      font-size: 0.9rem;             /* MUCH smaller than before */
-      color: var(--text-soft);
-      margin: 0 0 0.85rem;
-    }
 
     .hero-tagline {
       font-size: 1.0rem;
@@ -299,11 +286,11 @@
       height: 0;
       border-left: 18px solid transparent;
       border-right: 18px solid transparent;
-      border-top: 38px solid #c26a3d; /* points downward toward the sample */
+      border-top: 38px solid #c26a3d;
       filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
     }
 
-    /* Meander circuit (separate, draggable) */
+    /* Meander circuit */
     .mw-meander {
       position: absolute;
       bottom: 20%;
@@ -341,7 +328,7 @@
       filter: drop-shadow(0 0 14px rgba(226, 114, 63, 0.9));
     }
 
-    /* 2D material sample: triangular-ish lattice */
+    /* 2D material sample */
     .mw-sample {
       position: absolute;
       right: 9%;
@@ -379,7 +366,7 @@
       opacity: 1;
     }
 
-    /* Photon */
+    /* Photon + e–h */
     .mw-photon {
       position: absolute;
       width: 10px;
@@ -392,7 +379,6 @@
       z-index: 5;
     }
 
-    /* Electron–hole particles */
     .eh-particle {
       position: absolute;
       width: 9px;
@@ -454,37 +440,48 @@
       max-width: 32rem;
     }
 
-    /* News */
+    /* News – simpler lab style */
     .simple-card {
-      background: var(--card);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem 1.4rem;
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow-soft);
+      background: transparent;
+      border-radius: 0;
+      padding: 0.2rem 0 0.6rem;
+      border: none;
+      box-shadow: none;
       font-size: 0.9rem;
       color: var(--text-soft);
     }
 
     .news-list {
       list-style: none;
-      margin: 0.4rem 0 0;
-      padding: 0;
-      font-size: 0.9rem;
+      margin: 0.2rem 0 0;
+      padding: 0 0 0 1.25rem;
+      border-left: 1px solid rgba(148, 163, 184, 0.7);
     }
 
     .news-item {
+      position: relative;
       display: flex;
-      gap: 0.6rem;
-      padding: 0.45rem 0;
-      border-bottom: 1px dashed rgba(209, 213, 219, 0.8);
+      gap: 0.7rem;
+      padding: 0.25rem 0 0.8rem;
     }
 
-    .news-item:last-child { border-bottom: none; }
+    .news-item::before {
+      content: "";
+      position: absolute;
+      left: -0.58rem;
+      top: 0.7rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+    }
 
     .news-date {
-      font-size: 0.8rem;
-      color: #6b7280;
+      font-size: 0.78rem;
+      color: #4b5563;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
       min-width: 6.2rem;
       flex-shrink: 0;
     }
@@ -501,7 +498,7 @@
       text-align: center;
     }
 
-    /* Animations */
+    /* Entry animations */
     .hero,
     .simple-card {
       opacity: 0;
@@ -551,13 +548,9 @@
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <div class="eyebrow">MIT Physics · Condensed matter &amp; quantum information</div>
             <h1 class="hero-title">
-              Ji Quantum Lab
-            </h1>
-            <p class="hero-subtitle">
               Seeing quantum materials in the microwave world.
-            </p>
+            </h1>
             <p class="hero-tagline">
               We build microwave <strong>on-tip</strong> and <strong>on-chip</strong> experiments to explore
               correlated and topological phases in 2D materials, and to learn how
@@ -573,7 +566,7 @@
             </div>
           </div>
 
-          <!-- Interactive hero art (unchanged behaviour) -->
+          <!-- Interactive hero art -->
           <div class="hero-art" id="hero-art">
             <div class="hero-grid-pattern"></div>
 
@@ -621,9 +614,6 @@
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">News &amp; updates</h2>
-            <p class="section-sub">
-              A few snapshots of what we are building and planning as the lab takes shape.
-            </p>
           </div>
 
           <div class="simple-card">
@@ -632,7 +622,7 @@
                 <div class="news-date">Aug&nbsp;2025</div>
                 <div class="news-text">
                   We welcome <strong>Won</strong> and <strong>Wenkai</strong>, our first two graduate
-                  students in Ji Quantum Lab!
+                  students in Ji Quantum Lab.
                 </div>
               </li>
               <li class="news-item">
