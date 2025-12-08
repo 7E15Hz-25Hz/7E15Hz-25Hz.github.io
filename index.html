@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #f5f3ef;              /* warm, calm background */
+      --bg: #f5f3ef;
       --bg-soft: #ffffff;
       --card: #ffffff;
       --accent: #c26a3d;          /* muted copper */
@@ -135,13 +135,13 @@
 
     /* Hero */
     .hero {
-      padding: 2.8rem 0 2.0rem;
+      padding: 2.6rem 0 2.0rem;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 2.2rem;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.15fr);
+      gap: 2.1rem;
       align-items: center;
     }
 
@@ -152,25 +152,22 @@
     .hero-title {
       font-size: 1.4rem;
       line-height: 1.4;
-      margin: 0 0 0.65rem;
+      margin: 0 0 0.6rem;
       font-weight: 500;
-      color: var(--text-main);
     }
-
-    .hero-title span { color: var(--accent); }
 
     .hero-tagline {
       font-size: 1.0rem;
       color: var(--text-soft);
       max-width: 32rem;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.8rem;
     }
 
     .hero-note {
       font-size: 0.86rem;
       color: var(--text-soft);
       max-width: 34rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
 
     .hero-note strong { color: var(--text-main); }
@@ -178,7 +175,7 @@
     .hero-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.7rem;
     }
 
     .hero-link-btn {
@@ -187,7 +184,7 @@
       border-radius: 999px;
       border: 1px solid var(--accent);
       background: #fdf5ee;
-      color: #6c3b21;
+      color: #7b3f22;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
@@ -195,7 +192,7 @@
     }
 
     .hero-link-btn:hover {
-      background: #f3e3d7;
+      background: #f3e5da;
     }
 
     .hero-link-alt {
@@ -206,7 +203,7 @@
 
     .hero-link-alt:hover {
       background: #fdf5ee;
-      color: #6c3b21;
+      color: #7b3f22;
     }
 
     /* Hero art */
@@ -214,213 +211,223 @@
       position: relative;
       height: 260px;
       border-radius: 1.3rem;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(194, 106, 61, 0.14), transparent 60%),
-        radial-gradient(circle at 80% 90%, rgba(107, 114, 128, 0.18), transparent 55%),
-        #ffffff;
+      background: linear-gradient(135deg, #ffffff, #f8f6f2);
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
 
-    .mw-label-small {
+    /* Sample sheet with triangular “lattice” */
+    .mw-sheet {
       position: absolute;
-      top: 10%;
-      left: 7%;
+      right: 8%;
+      top: 16%;
+      width: 52%;
+      height: 62%;
+      border-radius: 1.1rem;
+      background: #fdfcfb;
+      border: 1px solid rgba(31, 41, 51, 0.08);
+      box-shadow: 0 14px 36px rgba(15, 23, 42, 0.10);
+      overflow: hidden;
+    }
+
+    .mw-sheet::before {
+      /* triangular pattern hint */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(60deg, rgba(147, 197, 114, 0.55) 1px, transparent 1px),
+        linear-gradient(120deg, rgba(147, 197, 114, 0.35) 1px, transparent 1px);
+      background-size: 16px 16px;
+      opacity: 0.35;
+    }
+
+    .mw-sheet::after {
+      content: "2D quantum material";
+      position: absolute;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
       font-size: 0.7rem;
-      padding: 0.24rem 0.6rem;
+      padding: 0.18rem 0.6rem;
       border-radius: 999px;
       background: rgba(253, 245, 238, 0.96);
-      border: 1px solid rgba(194, 106, 61, 0.5);
-      color: #6c3b21;
-      z-index: 3;
+      border: 1px solid #ead9c7;
+      color: #7b3f22;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
     }
 
-    .mw-label-sample {
-      position: absolute;
-      right: 10%;
-      bottom: 15%;
-      font-size: 0.7rem;
-      padding: 0.24rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(253, 245, 238, 0.98);
-      border: 1px solid rgba(194, 106, 61, 0.5);
-      color: #6c3b21;
-      z-index: 3;
+    .mw-sheet-hot::before {
+      background-image:
+        linear-gradient(60deg, rgba(249, 115, 22, 0.8) 1px, transparent 1px),
+        linear-gradient(120deg, rgba(56, 189, 248, 0.7) 1px, transparent 1px);
+      opacity: 0.55;
+      transition: opacity 0.15s ease;
     }
 
-    /* Draggable tip – narrower and longer */
-    .mw-tip-container {
+    /* Tip (downward triangle, draggable) */
+    .mw-tip {
       position: absolute;
-      top: 16%;
-      left: 24%;
-      width: 26px;
-      height: 80px;
+      left: 12%;
+      top: 10%;
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 46px solid #4b5563;
+      filter: drop-shadow(0 8px 10px rgba(15, 23, 42, 0.25));
       cursor: grab;
-      z-index: 4;
     }
 
-    .mw-tip-container:active {
+    .mw-tip::after {
+      /* small holder block above tip */
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: -10px;
+      width: 20px;
+      height: 12px;
+      border-radius: 5px 5px 2px 2px;
+      background: #e5e7eb;
+      border: 1px solid #d1d5db;
+    }
+
+    .mw-tip:active {
       cursor: grabbing;
     }
 
-    .mw-tip-body {
+    /* Meander resonator group (draggable) */
+    .mw-meander-group {
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-top: 52px solid #c26a3d;
-      filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
+      left: 6%;
+      bottom: 10%;
+      width: 230px;
+      height: 120px;
+      cursor: grab;
     }
 
-    /* Meander circuit with MW source */
-    .mw-meander {
+    .mw-meander-group:active {
+      cursor: grabbing;
+    }
+
+    .mw-source {
       position: absolute;
-      bottom: 20%;
-      left: 12%;
-      width: 170px;
-      height: 80px;
-      cursor: grab;
-      z-index: 4;
+      left: 0;
+      top: 45px;
+      width: 34px;
+      height: 22px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      background: #fdf5ee;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 0.68rem;
+      color: #7b3f22;
+      box-shadow: 0 6px 12px rgba(15, 23, 42, 0.12);
     }
 
-    .mw-meander:active {
-      cursor: grabbing;
-    }
-
-    .mw-meander svg {
-      width: 100%;
-      height: 100%;
+    .mw-meander {
+      position: absolute;
+      left: 34px;
+      top: 18px;
+      width: 180px;
+      height: 84px;
     }
 
     .mw-meander path {
       fill: none;
-      stroke: #c0262d;
-      stroke-width: 6;
+      stroke: #4baf6b;
+      stroke-width: 4;
       stroke-linecap: round;
       stroke-linejoin: round;
-      filter: drop-shadow(0 0 6px rgba(192, 38, 45, 0.45));
-      transition: filter 0.2s ease, stroke 0.2s ease;
     }
 
-    .mw-meander.active path {
-      stroke: #e2723f;
-      filter: drop-shadow(0 0 14px rgba(226, 114, 63, 0.9));
+    .mw-meander circle {
+      fill: #4baf6b;
     }
 
-    .mw-source-body {
-      fill: #fdf5ee;
-      stroke: #c26a3d;
-      stroke-width: 2;
+    .mw-meander-hot path {
+      stroke: #f97316;
+      filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.9));
     }
 
-    .mw-source-text {
-      font-size: 10px;
-      fill: #6c3b21;
-      font-weight: 600;
-      text-anchor: middle;
-      dominant-baseline: middle;
-    }
-
-    /* 2D material sample */
-    .mw-sample {
-      position: absolute;
-      right: 9%;
-      bottom: 17%;
-      width: 34%;
-      height: 84px;
-      border-radius: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.9);
-      background:
-        linear-gradient(135deg, rgba(194, 106, 61, 0.14), rgba(148, 163, 184, 0.10)),
-        linear-gradient(135deg, transparent 75%, rgba(148, 163, 184, 0.38) 75%) 0 0 / 18px 18px,
-        linear-gradient(315deg, transparent 75%, rgba(148, 163, 184, 0.32) 75%) 0 0 / 18px 18px;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
-      overflow: hidden;
-      transition: box-shadow 0.25s ease, border-color 0.25s ease;
-      z-index: 2;
-    }
-
-    .mw-sample.active {
-      border-color: var(--accent);
-      box-shadow: 0 0 22px rgba(194, 106, 61, 0.75);
-    }
-
-    .mw-sample-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 15% 40%, rgba(253, 245, 238, 0.9), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0.6;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .mw-sample.active .mw-sample-glow {
-      opacity: 1;
-    }
-
-    /* Photon + e–h */
+    /* Photon */
     .mw-photon {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #3b82f6;
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.9);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mw-photon.is-active {
+      animation: photonDrop 0.75s ease-out forwards;
+    }
+
+    @keyframes photonDrop {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      60% {
+        transform: translateY(70px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(90px);
+        opacity: 0;
+      }
+    }
+
+    /* Electron-hole pair */
+    .eh-dot {
       position: absolute;
       width: 10px;
       height: 10px;
-      border-radius: 50%;
-      background: #fbbf77;
-      box-shadow: 0 0 14px rgba(251, 191, 119, 0.9);
+      border-radius: 999px;
       opacity: 0;
       pointer-events: none;
-      z-index: 5;
     }
 
-    .eh-particle {
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 5;
+    .eh-electron {
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
-    .eh-particle.electron {
-      background: #3b82f6;
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+    .eh-hole {
+      background: #f97316;
+      box-shadow: 0 0 10px rgba(249, 115, 22, 0.9);
     }
 
-    .eh-particle.hole {
-      border: 2px solid #e11d48;
-      background: rgba(248, 250, 252, 0.96);
-      box-shadow: 0 0 10px rgba(225, 29, 72, 0.7);
+    .eh-electron.is-active {
+      animation: eBounce 0.8s ease-out forwards;
     }
 
-    .eh-particle.electron.active-electron {
-      animation: electronFly 0.7s ease-out forwards;
+    .eh-hole.is-active {
+      animation: hBounce 0.8s ease-out forwards;
     }
 
-    .eh-particle.hole.active-hole {
-      animation: holeFly 0.7s ease-out forwards;
-    }
-
-    @keyframes electronFly {
+    @keyframes eBounce {
       0%   { transform: translate(0, 0); opacity: 1; }
-      100% { transform: translate(-26px, -12px); opacity: 0; }
+      30%  { transform: translate(-6px, -6px); }
+      55%  { transform: translate(4px, 3px); }
+      100% { transform: translate(-3px, -2px); opacity: 0; }
     }
 
-    @keyframes holeFly {
+    @keyframes hBounce {
       0%   { transform: translate(0, 0); opacity: 1; }
-      100% { transform: translate(26px, 12px); opacity: 0; }
+      30%  { transform: translate(6px, -5px); }
+      55%  { transform: translate(-4px, 2px); }
+      100% { transform: translate(3px, -1px); opacity: 0; }
     }
 
     /* Sections */
-    section { padding: 2.2rem 0 0.4rem; }
+    section { padding: 1.8rem 0 0.4rem; }
 
     .section-header {
       display: flex;
@@ -431,65 +438,55 @@
     }
 
     .section-title {
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       margin: 0;
     }
 
     .section-sub {
       font-size: 0.9rem;
       color: var(--text-soft);
-      max-width: 32rem;
+      max-width: 30rem;
     }
 
-    /* News – simpler lab style */
+    /* News */
     .simple-card {
-      background: transparent;
-      border-radius: 0;
-      padding: 0.2rem 0 0.6rem;
-      border: none;
-      box-shadow: none;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.3rem;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.6rem;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.04);
       font-size: 0.9rem;
       color: var(--text-soft);
     }
 
     .news-list {
       list-style: none;
-      margin: 0.2rem 0 0;
-      padding: 0 0 0 1.25rem;
-      border-left: 1px solid rgba(148, 163, 184, 0.7);
+      margin: 0.4rem 0 0;
+      padding: 0;
+      font-size: 0.9rem;
+      color: var(--text-soft);
     }
 
     .news-item {
-      position: relative;
       display: flex;
-      gap: 0.7rem;
-      padding: 0.25rem 0 0.8rem;
+      gap: 0.6rem;
+      padding: 0.3rem 0;
+      border-bottom: 1px dashed #e5ded4;
     }
 
-    .news-item::before {
-      content: "";
-      position: absolute;
-      left: -0.58rem;
-      top: 0.7rem;
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid var(--accent);
-    }
+    .news-item:last-child { border-bottom: none; }
 
     .news-date {
-      font-size: 0.78rem;
-      color: #4b5563;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      min-width: 6.2rem;
+      font-size: 0.8rem;
+      color: #8b7356;
+      min-width: 6rem;
       flex-shrink: 0;
     }
 
     .news-text { flex: 1; }
 
-    /* Entry animations */
+    /* Fade-in */
     .hero,
     .simple-card {
       opacity: 0;
@@ -498,7 +495,7 @@
     }
 
     .simple-card {
-      animation-delay: 0.25s;
+      animation-delay: 0.18s;
     }
 
     @keyframes fadeUp {
@@ -543,7 +540,7 @@
               Seeing quantum materials in the microwave world.
             </h1>
             <p class="hero-tagline">
-              We build microwave <strong>on-tip</strong> and <strong>on-chip</strong> experiments to explore
+              We build microwave transport and scanning experiments to explore
               correlated and topological phases in 2D materials, and to learn how
               to program new quantum states of matter.
             </p>
@@ -557,44 +554,39 @@
             </div>
           </div>
 
-          <!-- Interactive hero art -->
+          <!-- Interactive art -->
           <div class="hero-art" id="hero-art">
-            <div class="mw-label-small">Microwave on tip &amp; on chip</div>
-            <div class="mw-label-sample">2D quantum material</div>
+            <div class="mw-sheet" id="mw-sheet"></div>
 
-            <!-- Draggable tip -->
-            <div class="mw-tip-container" id="tip">
-              <div class="mw-tip-body"></div>
-            </div>
+            <!-- Tip -->
+            <div class="mw-tip" id="mw-tip"></div>
 
-            <!-- Draggable meander circuit with MW source -->
-            <div class="mw-meander" id="meander">
-              <svg viewBox="0 0 200 80" aria-hidden="true" focusable="false">
-                <!-- MW source block -->
-                <rect x="10" y="26" width="42" height="28" rx="6" ry="6"
-                      class="mw-source-body" />
-                <text x="31" y="40" class="mw-source-text">MW</text>
-
-                <!-- Straight line + semicircle + straight line + semicircle -->
+            <!-- Meander resonator + source -->
+            <div class="mw-meander-group" id="mw-meander-group">
+              <div class="mw-source">MW</div>
+              <svg class="mw-meander" viewBox="0 0 160 90">
+                <!-- serpentine meander, rounded like your reference image -->
                 <path d="
-                  M 52 40
-                  L 95 40
-                  A 14 14 0 0 1 123 40
-                  L 152 40
-                  A 14 14 0 0 0 180 40
+                  M 6 20
+                  H 120
+                  Q 130 20 130 30
+                  V 38
+                  Q 130 48 120 48
+                  H 20
+                  Q 10 48 10 58
+                  V 66
+                  Q 10 76 20 76
+                  H 140
                 " />
+                <!-- small coupling pad -->
+                <circle cx="140" cy="76" r="4" />
               </svg>
             </div>
 
-            <!-- Sample -->
-            <div class="mw-sample" id="sample">
-              <div class="mw-sample-glow"></div>
-            </div>
-
-            <!-- Photon + e–h particles -->
-            <div class="mw-photon" id="photon"></div>
-            <div class="eh-particle electron" id="electron"></div>
-            <div class="eh-particle hole" id="hole"></div>
+            <!-- Photon & e–h pair -->
+            <div class="mw-photon" id="mw-photon"></div>
+            <div class="eh-dot eh-electron" id="eh-electron"></div>
+            <div class="eh-dot eh-hole" id="eh-hole"></div>
           </div>
         </div>
       </section>
@@ -603,7 +595,7 @@
       <section id="news">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">News &amp; updates</h2>
+            <h2 class="section-title">News</h2>
           </div>
 
           <div class="simple-card">
@@ -611,22 +603,7 @@
               <li class="news-item">
                 <div class="news-date">Aug&nbsp;2025</div>
                 <div class="news-text">
-                  We welcome <strong>Won</strong> and <strong>Wenkai</strong>, our first two graduate
-                  students in Ji Quantum Lab.
-                </div>
-              </li>
-              <li class="news-item">
-                <div class="news-date">Dec&nbsp;2025</div>
-                <div class="news-text">
-                  Ji Quantum Lab website goes live. We are preparing for the official
-                  launch of the lab at MIT and beginning to recruit students and postdocs.
-                </div>
-              </li>
-              <li class="news-item">
-                <div class="news-date">Ongoing</div>
-                <div class="news-text">
-                  If you are interested in microwave techniques, 2D materials,
-                  or programmable quantum phases, you are warmly encouraged to reach out.
+                  Welcome Won and Wenkai, our first two graduate students!
                 </div>
               </li>
             </ul>
@@ -637,144 +614,122 @@
   </div>
 
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const hero = document.getElementById('hero-art');
-      const tip = document.getElementById('tip');
-      const meander = document.getElementById('meander');
-      const sample = document.getElementById('sample');
-      const photon = document.getElementById('photon');
-      const electron = document.getElementById('electron');
-      const hole = document.getElementById('hole');
+    // Utility: simple draggable
+    function makeDraggable(el, onMove) {
+      let startX = 0, startY = 0;
+      let originX = 0, originY = 0;
+      let dragging = false;
 
-      function makeDraggable(el) {
-        let isDown = false;
-        let offsetX = 0;
-        let offsetY = 0;
+      const parent = el.parentElement;
 
-        el.addEventListener('mousedown', (e) => {
-          isDown = true;
-          const rect = el.getBoundingClientRect();
-          offsetX = e.clientX - rect.left;
-          offsetY = e.clientY - rect.top;
-          e.preventDefault();
-        });
-
-        window.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          const heroRect = hero.getBoundingClientRect();
-          let left = e.clientX - offsetX - heroRect.left;
-          let top = e.clientY - offsetY - heroRect.top;
-
-          left = Math.max(0, Math.min(left, heroRect.width - el.offsetWidth));
-          top = Math.max(0, Math.min(top, heroRect.height - el.offsetHeight));
-
-          el.style.left = left + 'px';
-          el.style.top = top + 'px';
-
-          checkCircuitSample();
-        });
-
-        window.addEventListener('mouseup', () => {
-          isDown = false;
-        });
+      function pointerDown(e) {
+        const rect = el.getBoundingClientRect();
+        originX = rect.left;
+        originY = rect.top;
+        startX = e.clientX;
+        startY = e.clientY;
+        dragging = true;
+        e.preventDefault();
       }
 
-      makeDraggable(tip);
-      makeDraggable(meander);
-
-      function isOverlapping(a, b) {
-        const ar = a.getBoundingClientRect();
-        const br = b.getBoundingClientRect();
-        return (
-          ar.left < br.right &&
-          ar.right > br.left &&
-          ar.top < br.bottom &&
-          ar.bottom > br.top
-        );
+      function pointerMove(e) {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        const parentRect = parent.getBoundingClientRect();
+        let newLeft = originX + dx - parentRect.left;
+        let newTop  = originY + dy - parentRect.top;
+        // simple bounds
+        const maxLeft = parentRect.width - el.offsetWidth;
+        const maxTop  = parentRect.height - el.offsetHeight;
+        newLeft = Math.max(0, Math.min(maxLeft, newLeft));
+        newTop  = Math.max(0, Math.min(maxTop, newTop));
+        el.style.transform = `translate(${newLeft}px, ${newTop}px)`;
+        if (onMove) onMove();
       }
 
-      function checkCircuitSample() {
-        const overlap = isOverlapping(meander, sample);
-        if (overlap) {
-          meander.classList.add('active');
-          sample.classList.add('active');
-        } else {
-          meander.classList.remove('active');
-          sample.classList.remove('active');
-        }
+      function pointerUp() {
+        dragging = false;
       }
 
-      function tipOnSample() {
-        return isOverlapping(tip, sample);
+      el.addEventListener('mousedown', pointerDown);
+      window.addEventListener('mousemove', pointerMove);
+      window.addEventListener('mouseup', pointerUp);
+      // touch
+      el.addEventListener('touchstart', e => pointerDown(e.touches[0]), {passive:false});
+      window.addEventListener('touchmove', e => pointerMove(e.touches[0]), {passive:false});
+      window.addEventListener('touchend', pointerUp);
+    }
+
+    const heroArt   = document.getElementById('hero-art');
+    const tip       = document.getElementById('mw-tip');
+    const sheet     = document.getElementById('mw-sheet');
+    const meanderGp = document.getElementById('mw-meander-group');
+    const meanderSVG = meanderGp.querySelector('.mw-meander');
+    const photon    = document.getElementById('mw-photon');
+    const eEl       = document.getElementById('eh-electron');
+    const hEl       = document.getElementById('eh-hole');
+
+    function rectsOverlap(r1, r2) {
+      return !(
+        r1.right < r2.left ||
+        r1.left  > r2.right ||
+        r1.bottom < r2.top ||
+        r1.top > r2.bottom
+      );
+    }
+
+    function updateMeanderHot() {
+      const sheetRect = sheet.getBoundingClientRect();
+      const mRect     = meanderGp.getBoundingClientRect();
+      const hot = rectsOverlap(sheetRect, mRect);
+      if (hot) {
+        meanderSVG.classList.add('mw-meander-hot');
+        sheet.classList.add('mw-sheet-hot');
+      } else {
+        meanderSVG.classList.remove('mw-meander-hot');
+        sheet.classList.remove('mw-sheet-hot');
       }
+    }
 
-      function launchPhoton() {
-        const heroRect = hero.getBoundingClientRect();
-        const tipRect = tip.getBoundingClientRect();
-        const sampleRect = sample.getBoundingClientRect();
+    // Drag tip and meander
+    makeDraggable(tip, () => {});
+    makeDraggable(meanderGp, updateMeanderHot);
 
-        const startX = tipRect.left + tipRect.width / 2 - heroRect.left;
-        const startY = tipRect.bottom - heroRect.top;
-        const endX = sampleRect.left + sampleRect.width / 2 - heroRect.left;
-        const endY = sampleRect.top + sampleRect.height / 2 - heroRect.top;
+    function restartAnim(el, cls) {
+      el.classList.remove(cls);
+      void el.offsetWidth; // force reflow
+      el.classList.add(cls);
+    }
 
-        photon.style.left = (startX - 5) + 'px';
-        photon.style.top = (startY - 5) + 'px';
-        photon.style.opacity = 1;
+    tip.addEventListener('click', () => {
+      const sheetRect = sheet.getBoundingClientRect();
+      const tipRect   = tip.getBoundingClientRect();
+      if (!rectsOverlap(sheetRect, tipRect)) return;
 
-        const duration = 900;
-        const startTime = performance.now();
+      const heroRect = heroArt.getBoundingClientRect();
 
-        function step(now) {
-          const t = Math.min(1, (now - startTime) / duration);
-          const x = startX + (endX - startX) * t;
-          const y = startY + (endY - startY) * t;
+      // Place photon at tip apex
+      const tipApexX = tipRect.left + tipRect.width / 2;
+      const tipApexY = tipRect.bottom;
+      photon.style.left = (tipApexX - heroRect.left - 6) + 'px';
+      photon.style.top  = (tipApexY - heroRect.top - 6) + 'px';
 
-          photon.style.left = (x - 5) + 'px';
-          photon.style.top = (y - 5) + 'px';
+      // Place e–h pair near center of sheet
+      const sCenterX = sheetRect.left + sheetRect.width / 2;
+      const sCenterY = sheetRect.top  + sheetRect.height / 2;
+      eEl.style.left = (sCenterX - heroRect.left - 14) + 'px';
+      eEl.style.top  = (sCenterY - heroRect.top - 6) + 'px';
+      hEl.style.left = (sCenterX - heroRect.left + 4) + 'px';
+      hEl.style.top  = (sCenterY - heroRect.top - 6) + 'px';
 
-          if (t < 1) {
-            requestAnimationFrame(step);
-          } else {
-            photon.style.opacity = 0;
-            triggerElectronHole(endX, endY);
-          }
-        }
-
-        requestAnimationFrame(step);
-      }
-
-      function triggerElectronHole(x, y) {
-        electron.style.left = (x - 4.5) + 'px';
-        electron.style.top = (y - 4.5) + 'px';
-        hole.style.left = (x - 4.5) + 'px';
-        hole.style.top = (y - 4.5) + 'px';
-
-        electron.classList.remove('active-electron');
-        hole.classList.remove('active-hole');
-
-        void electron.offsetWidth;
-        void hole.offsetWidth;
-
-        electron.classList.add('active-electron');
-        hole.classList.add('active-hole');
-
-        setTimeout(() => {
-          electron.classList.remove('active-electron');
-          hole.classList.remove('active-hole');
-        }, 800);
-      }
-
-      // Only emit photon on click *and* when tip overlaps sample
-      tip.addEventListener('click', () => {
-        if (tipOnSample()) {
-          launchPhoton();
-        }
-      });
-
-      // Initial state
-      checkCircuitSample();
+      restartAnim(photon, 'is-active');
+      restartAnim(eEl, 'is-active');
+      restartAnim(hEl, 'is-active');
     });
+
+    // initialize meander hot state once layout is ready
+    window.addEventListener('load', updateMeanderHot);
   </script>
 </body>
 </html>
