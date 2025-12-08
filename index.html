@@ -229,11 +229,29 @@
       opacity: 0.85;
     }
 
-    /* Tip (scanning tip) */
-    .mw-tip {
+    .hero-art { position: relative; }
+
+    /* Draggable microwave source wrapper */
+    .mw-source {
       position: absolute;
       top: 16%;
       left: 24%;
+      width: 56px;
+      height: 52px;
+      cursor: grab;
+      z-index: 3;
+    }
+
+    .mw-source.dragging {
+      cursor: grabbing;
+    }
+
+    /* Tip (scanning tip) */
+    .mw-tip {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 0;
       height: 0;
       border-left: 18px solid transparent;
@@ -244,8 +262,9 @@
 
     .mw-tip-base {
       position: absolute;
-      top: 22%;
-      left: 20.5%;
+      top: 34px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 56px;
       height: 16px;
       border-radius: 999px;
@@ -260,6 +279,7 @@
       bottom: 32%;
       width: 46%;
       height: 40px;
+      z-index: 1;
     }
 
     .mw-line {
@@ -326,6 +346,7 @@
       width: 40%;
       height: 46px;
       overflow: visible;
+      z-index: 1;
     }
 
     .mw-sine path {
@@ -344,6 +365,19 @@
       100% {
         stroke-dashoffset: -44;
       }
+    }
+
+    /* Photon that flies from source to sheet */
+    .mw-photon {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 12px rgba(194, 106, 61, 0.75);
+      z-index: 4;
+      pointer-events: none;
     }
 
     /* Sheet (2D material) */
@@ -366,6 +400,7 @@
       border: 1px solid rgba(194, 106, 61, 0.55);
       box-shadow: 0 10px 26px rgba(148, 92, 43, 0.15);
       overflow: hidden;
+      z-index: 1;
     }
 
     .mw-sheet-glow {
@@ -399,6 +434,7 @@
       border: 1px solid #e3d6c6;
       color: #7b4122;
       box-shadow: 0 8px 18px rgba(148, 92, 43, 0.18);
+      z-index: 2;
     }
 
     .mw-label-small {
@@ -411,6 +447,7 @@
       background: rgba(253, 247, 239, 0.96);
       border: 1px solid rgba(227, 214, 198, 0.9);
       color: #7b4122;
+      z-index: 2;
     }
 
     /* Sections */
@@ -559,9 +596,11 @@
             <!-- labels -->
             <div class="mw-label-small">Microwave circuit</div>
 
-            <!-- tip and base -->
-            <div class="mw-tip"></div>
-            <div class="mw-tip-base"></div>
+            <!-- draggable source (tip + base) -->
+            <div class="mw-source" id="mw-source">
+              <div class="mw-tip"></div>
+              <div class="mw-tip-base"></div>
+            </div>
 
             <!-- circuit -->
             <div class="mw-circuit">
@@ -573,7 +612,6 @@
 
             <!-- sinusoidal microwave wave between tip and sheet -->
             <svg class="mw-sine" viewBox="0 0 160 40" preserveAspectRatio="none">
-              <!-- approximate sinusoid across the device -->
               <path d="M0 20
                        Q 10 5 20 20
                        T 40 20
@@ -637,5 +675,99 @@
       © 2025 Ji Quantum Lab · MIT
     </footer>
   </div>
+
+  <script>
+    (function() {
+      const hero = document.querySelector('.hero-art');
+      const source = document.getElementById('mw-source');
+      const sheet = document.querySelector('.mw-sheet');
+
+      if (!hero || !source || !sheet) return;
+
+      let isDragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      source.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        source.classList.add('dragging');
+
+        const sourceRect = source.getBoundingClientRect();
+        offsetX = e.clientX - sourceRect.left;
+        offsetY = e.clientY - sourceRect.top;
+
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+      });
+
+      function onMouseMove(e) {
+        if (!isDragging) return;
+
+        const heroRect = hero.getBoundingClientRect();
+        const sourceRect = source.getBoundingClientRect();
+
+        let x = e.clientX - heroRect.left - offsetX;
+        let y = e.clientY - heroRect.top - offsetY;
+
+        // clamp inside hero-art
+        const maxX = heroRect.width - sourceRect.width;
+        const maxY = heroRect.height - sourceRect.height;
+        x = Math.max(0, Math.min(maxX, x));
+        y = Math.max(0, Math.min(maxY, y));
+
+        source.style.left = x + 'px';
+        source.style.top = y + 'px';
+      }
+
+      function onMouseUp() {
+        if (!isDragging) return;
+        isDragging = false;
+        source.classList.remove('dragging');
+
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+
+        launchPhoton();
+      }
+
+      function launchPhoton() {
+        const photon = document.createElement('div');
+        photon.className = 'mw-photon';
+        hero.appendChild(photon);
+
+        const heroRect = hero.getBoundingClientRect();
+        const sourceRect = source.getBoundingClientRect();
+        const sheetRect = sheet.getBoundingClientRect();
+
+        const startX = sourceRect.left + sourceRect.width / 2 - heroRect.left;
+        const startY = sourceRect.top + sourceRect.height / 2 - heroRect.top;
+
+        const endX = sheetRect.left + sheetRect.width / 2 - heroRect.left;
+        const endY = sheetRect.top + sheetRect.height * 0.25 - heroRect.top;
+
+        photon.style.left = startX + 'px';
+        photon.style.top = startY + 'px';
+
+        const dx = endX - startX;
+        const dy = endY - startY;
+
+        const animation = photon.animate(
+          [
+            { transform: 'translate(0, 0)', opacity: 1 },
+            { transform: 'translate(' + dx + 'px, ' + dy + 'px)', opacity: 0.2 }
+          ],
+          {
+            duration: 800,
+            easing: 'ease-out'
+          }
+        );
+
+        animation.onfinish = () => {
+          photon.remove();
+        };
+      }
+    })();
+  </script>
 </body>
 </html>
