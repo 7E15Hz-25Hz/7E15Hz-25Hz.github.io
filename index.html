@@ -262,4 +262,535 @@
       font-size: 0.7rem;
       padding: 0.24rem 0.6rem;
       border-radius: 999px;
-      background: rgba(253, 245, 2
+      background: rgba(253, 245, 238, 0.98);
+      border: 1px solid rgba(194, 106, 61, 0.5);
+      color: #6c3b21;
+      z-index: 3;
+    }
+
+    /* Draggable tip (downward triangle only) */
+    .mw-tip-container {
+      position: absolute;
+      top: 18%;
+      left: 24%;
+      width: 40px;
+      height: 60px;
+      cursor: grab;
+      z-index: 4;
+    }
+
+    .mw-tip-container:active {
+      cursor: grabbing;
+    }
+
+    .mw-tip-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 38px solid #c26a3d; /* points downward toward the sample */
+      filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
+    }
+
+    /* Meander circuit (separate, draggable) */
+    .mw-meander {
+      position: absolute;
+      bottom: 20%;
+      left: 12%;
+      width: 150px;
+      height: 80px;
+      cursor: grab;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mw-meander:active {
+      cursor: grabbing;
+    }
+
+    .mw-meander svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .mw-meander path {
+      fill: none;
+      stroke: #c0262d;
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 6px rgba(192, 38, 45, 0.45));
+      transition: filter 0.2s ease, stroke 0.2s ease;
+    }
+
+    .mw-meander.active path {
+      stroke: #e2723f;
+      filter: drop-shadow(0 0 14px rgba(226, 114, 63, 0.9));
+    }
+
+    /* 2D material sample: triangular-ish lattice */
+    .mw-sample {
+      position: absolute;
+      right: 9%;
+      bottom: 17%;
+      width: 34%;
+      height: 84px;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background:
+        linear-gradient(135deg, rgba(194, 106, 61, 0.14), rgba(148, 163, 184, 0.10)),
+        linear-gradient(135deg, transparent 75%, rgba(148, 163, 184, 0.38) 75%) 0 0 / 18px 18px,
+        linear-gradient(315deg, transparent 75%, rgba(148, 163, 184, 0.32) 75%) 0 0 / 18px 18px;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+      z-index: 2;
+    }
+
+    .mw-sample.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 22px rgba(194, 106, 61, 0.75);
+    }
+
+    .mw-sample-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 40%, rgba(253, 245, 238, 0.9), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .mw-sample.active .mw-sample-glow {
+      opacity: 1;
+    }
+
+    /* Photon */
+    .mw-photon {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fbbf77;
+      box-shadow: 0 0 14px rgba(251, 191, 119, 0.9);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Electron–hole particles */
+    .eh-particle {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .eh-particle.electron {
+      background: #3b82f6;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+    }
+
+    .eh-particle.hole {
+      border: 2px solid #e11d48;
+      background: rgba(248, 250, 252, 0.96);
+      box-shadow: 0 0 10px rgba(225, 29, 72, 0.7);
+    }
+
+    .eh-particle.electron.active-electron {
+      animation: electronFly 0.7s ease-out forwards;
+    }
+
+    .eh-particle.hole.active-hole {
+      animation: holeFly 0.7s ease-out forwards;
+    }
+
+    @keyframes electronFly {
+      0%   { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(-26px, -12px); opacity: 0; }
+    }
+
+    @keyframes holeFly {
+      0%   { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(26px, 12px); opacity: 0; }
+    }
+
+    /* Sections */
+    section { padding: 2.2rem 0 0.4rem; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+    }
+
+    /* News */
+    .simple-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.4rem;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .news-list {
+      list-style: none;
+      margin: 0.4rem 0 0;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed rgba(209, 213, 219, 0.8);
+    }
+
+    .news-item:last-child { border-bottom: none; }
+
+    .news-date {
+      font-size: 0.8rem;
+      color: #6b7280;
+      min-width: 6.2rem;
+      flex-shrink: 0;
+    }
+
+    .news-text { flex: 1; }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 2rem;
+      padding: 1.4rem 0 1.8rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-align: center;
+    }
+
+    /* Animations */
+    .hero,
+    .simple-card {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeUp 0.7s ease-out forwards;
+    }
+
+    .simple-card {
+      animation-delay: 0.25s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-mark">JiQL</div>
+          <div>
+            <div class="logo-text-main">Ji Quantum Lab</div>
+            <div class="logo-text-sub">MIT Physics · Quantum materials in the microwave world</div>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="people.html">People</a>
+          <a href="publications.html">Publications</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Ji Quantum Lab · MIT</div>
+            <h1 class="hero-title">
+              Seeing quantum materials<br />
+              in the microwave world.
+            </h1>
+            <p class="hero-tagline">
+              We build microwave <strong>on-tip</strong> and <strong>on-chip</strong> experiments to explore
+              correlated and topological phases in 2D materials, and to learn how
+              to program new quantum states of matter.
+            </p>
+            <p class="hero-note">
+              <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026.
+              Students and postdocs interested in building new tools and new physics are very welcome.
+            </p>
+            <div class="hero-links">
+              <a class="hero-link-btn" href="research.html">See research directions →</a>
+              <a class="hero-link-btn hero-link-alt" href="people.html">Meet the people →</a>
+            </div>
+          </div>
+
+          <!-- Interactive hero art -->
+          <div class="hero-art" id="hero-art">
+            <div class="hero-grid-pattern"></div>
+
+            <div class="mw-label-small">Microwave on tip &amp; on chip</div>
+            <div class="mw-label-sample">2D quantum material</div>
+
+            <!-- Draggable tip -->
+            <div class="mw-tip-container" id="tip">
+              <div class="mw-tip-body"></div>
+            </div>
+
+            <!-- Draggable meander circuit -->
+            <div class="mw-meander" id="meander">
+              <svg viewBox="0 0 150 80" aria-hidden="true" focusable="false">
+                <!-- serpentine meander path -->
+                <path d="
+                  M 15 10
+                  H 40
+                  V 70
+                  H 60
+                  V 10
+                  H 80
+                  V 70
+                  H 100
+                  V 10
+                  H 125
+                " />
+              </svg>
+            </div>
+
+            <!-- Sample (triangular lattice-ish) -->
+            <div class="mw-sample" id="sample">
+              <div class="mw-sample-glow"></div>
+            </div>
+
+            <!-- Photon + e–h particles -->
+            <div class="mw-photon" id="photon"></div>
+            <div class="eh-particle electron" id="electron"></div>
+            <div class="eh-particle hole" id="hole"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section id="news">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">News &amp; updates</h2>
+            <p class="section-sub">
+              A few snapshots of what we are building and planning as the lab takes shape.
+            </p>
+          </div>
+
+          <div class="simple-card">
+            <ul class="news-list">
+              <li class="news-item">
+                <div class="news-date">Aug&nbsp;2025</div>
+                <div class="news-text">
+                  We welcome <strong>Won</strong> and <strong>Wenkai</strong>, our first two graduate
+                  students in Ji Quantum Lab!
+                </div>
+              </li>
+              <li class="news-item">
+                <div class="news-date">Dec&nbsp;2025</div>
+                <div class="news-text">
+                  Ji Quantum Lab website goes live. We are preparing for the official
+                  launch of the lab at MIT and beginning to recruit students and postdocs.
+                </div>
+              </li>
+              <li class="news-item">
+                <div class="news-date">Ongoing</div>
+                <div class="news-text">
+                  If you are interested in microwave techniques, 2D materials,
+                  or programmable quantum phases, you are warmly encouraged to reach out.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      © 2025 Ji Quantum Lab · MIT
+    </footer>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const hero = document.getElementById('hero-art');
+      const tip = document.getElementById('tip');
+      const meander = document.getElementById('meander');
+      const sample = document.getElementById('sample');
+      const photon = document.getElementById('photon');
+      const electron = document.getElementById('electron');
+      const hole = document.getElementById('hole');
+
+      function makeDraggable(el) {
+        let isDown = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        el.addEventListener('mousedown', (e) => {
+          isDown = true;
+          const rect = el.getBoundingClientRect();
+          offsetX = e.clientX - rect.left;
+          offsetY = e.clientY - rect.top;
+          e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          const heroRect = hero.getBoundingClientRect();
+          let left = e.clientX - offsetX - heroRect.left;
+          let top = e.clientY - offsetY - heroRect.top;
+
+          left = Math.max(0, Math.min(left, heroRect.width - el.offsetWidth));
+          top = Math.max(0, Math.min(top, heroRect.height - el.offsetHeight));
+
+          el.style.left = left + 'px';
+          el.style.top = top + 'px';
+
+          checkCircuitSample();
+        });
+
+        window.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+      }
+
+      makeDraggable(tip);
+      makeDraggable(meander);
+
+      function isOverlapping(a, b) {
+        const ar = a.getBoundingClientRect();
+        const br = b.getBoundingClientRect();
+        return (
+          ar.left < br.right &&
+          ar.right > br.left &&
+          ar.top < br.bottom &&
+          ar.bottom > br.top
+        );
+      }
+
+      function checkCircuitSample() {
+        const overlap = isOverlapping(meander, sample);
+        if (overlap) {
+          meander.classList.add('active');
+          sample.classList.add('active');
+        } else {
+          meander.classList.remove('active');
+          sample.classList.remove('active');
+        }
+      }
+
+      function tipOnSample() {
+        return isOverlapping(tip, sample);
+      }
+
+      function launchPhoton() {
+        const heroRect = hero.getBoundingClientRect();
+        const tipRect = tip.getBoundingClientRect();
+        const sampleRect = sample.getBoundingClientRect();
+
+        const startX = tipRect.left + tipRect.width / 2 - heroRect.left;
+        const startY = tipRect.bottom - heroRect.top; // from tip apex
+        const endX = sampleRect.left + sampleRect.width / 2 - heroRect.left;
+        const endY = sampleRect.top + sampleRect.height / 2 - heroRect.top;
+
+        photon.style.left = (startX - 5) + 'px';
+        photon.style.top = (startY - 5) + 'px';
+        photon.style.opacity = 1;
+
+        const duration = 900;
+        const startTime = performance.now();
+
+        function step(now) {
+          const t = Math.min(1, (now - startTime) / duration);
+          const x = startX + (endX - startX) * t;
+          const y = startY + (endY - startY) * t;
+
+          photon.style.left = (x - 5) + 'px';
+          photon.style.top = (y - 5) + 'px';
+
+          if (t < 1) {
+            requestAnimationFrame(step);
+          } else {
+            photon.style.opacity = 0;
+            triggerElectronHole(endX, endY);
+          }
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      function triggerElectronHole(x, y) {
+        electron.style.left = (x - 4.5) + 'px';
+        electron.style.top = (y - 4.5) + 'px';
+        hole.style.left = (x - 4.5) + 'px';
+        hole.style.top = (y - 4.5) + 'px';
+
+        electron.classList.remove('active-electron');
+        hole.classList.remove('active-hole');
+
+        void electron.offsetWidth;
+        void hole.offsetWidth;
+
+        electron.classList.add('active-electron');
+        hole.classList.add('active-hole');
+
+        setTimeout(() => {
+          electron.classList.remove('active-electron');
+          hole.classList.remove('active-hole');
+        }, 800);
+      }
+
+      // Only emit photon on click *and* when tip overlaps sample
+      tip.addEventListener('click', () => {
+        if (tipOnSample()) {
+          launchPhoton();
+        }
+      });
+
+      // Initial state
+      checkCircuitSample();
+    });
+  </script>
+</body>
+</html>
