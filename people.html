@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Ji Quantum Lab · People</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <style>
+  <style>
     :root {
       --bg: #fffbf2;
       --bg-soft: #ffffff;
@@ -203,7 +203,7 @@
       color: var(--text-soft);
     }
 
-    /* Hero art */
+    /* Hero art (unused on this page but kept for consistency) */
     .hero-art {
       position: relative;
       height: 240px;
@@ -228,75 +228,6 @@
       opacity: 0.9;
     }
 
-    .hero-chip {
-      position: absolute;
-      top: 18%;
-      left: 14%;
-      width: 150px;
-      height: 78px;
-      border-radius: 0.85rem;
-      background: #fffaf5;
-      border: 1px solid #fed7aa;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0.55rem 0.8rem;
-      font-size: 0.72rem;
-      color: var(--text-soft);
-      box-shadow: 0 10px 24px rgba(148, 92, 43, 0.18);
-    }
-
-    .hero-chip-title {
-      font-size: 0.78rem;
-      color: var(--accent);
-      margin-bottom: 0.1rem;
-      font-weight: 600;
-    }
-
-    .hero-chip-kv {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-top: 0.08rem;
-    }
-
-    .hero-chip-kv span:first-child { font-size: 0.7rem; }
-
-    .hero-chip-kv span:last-child {
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .hero-orbit {
-      position: absolute;
-      right: 12%;
-      bottom: 14%;
-      width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      border: 1px dashed rgba(248, 171, 84, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-orbit-inner {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      border: 1px solid rgba(249, 115, 22, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: var(--accent);
-      text-align: center;
-      padding: 0.3rem;
-      box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5);
-      animation: orbitPulse 3s ease-in-out infinite;
-      background: #fff7ed;
-    }
-
     /* Sections */
     section { padding: 2.2rem 0 0.4rem; }
 
@@ -319,7 +250,7 @@
       max-width: 26rem;
     }
 
-    /* News */
+    /* Cards */
     .simple-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
@@ -331,31 +262,108 @@
       color: var(--text-soft);
     }
 
-    .news-list {
-      list-style: none;
-      margin: 0.4rem 0 0;
-      padding: 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .news-item {
+    /* PI card */
+    .pi-card {
       display: flex;
-      gap: 0.6rem;
-      padding: 0.45rem 0;
-      border-bottom: 1px dashed #fcd9b6;
+      gap: 1.2rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
 
-    .news-item:last-child { border-bottom: none; }
-
-    .news-date {
-      font-size: 0.8rem;
-      color: #9a7b4f;
-      min-width: 5.1rem;
+    .pi-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      overflow: hidden;
       flex-shrink: 0;
     }
 
-    .news-text { flex: 1; }
+    .pi-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pi-text strong {
+      font-size: 1.02rem;
+    }
+
+    .pi-text p {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      max-width: 32rem;
+    }
+
+    /* People grid */
+    .people-subheading {
+      font-size: 0.98rem;
+      margin: 0 0 0.6rem;
+      color: var(--text-main);
+    }
+
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .person-card {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 28px rgba(148, 92, 43, 0.04);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .person-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .person-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .person-name {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--text-main);
+    }
+
+    .person-role {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .person-note {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    .people-note {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+      margin-top: 0.2rem;
+    }
 
     /* Footer */
     .site-footer {
@@ -395,22 +403,7 @@
         transform: translateY(0);
       }
     }
-
-    @keyframes orbitPulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 16px 9px rgba(249, 115, 22, 0.18);
-        transform: scale(1.03);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
-        transform: scale(1);
-      }
-    }
-</style>
+  </style>
 </head>
 <body>
   <div class="page">
@@ -434,6 +427,7 @@
     </header>
 
     <main>
+      <!-- Hero -->
       <section class="hero">
         <div class="container">
           <div class="eyebrow">People</div>
@@ -443,8 +437,8 @@
             and equally serious about being humane, thoughtful, and collaborative.
           </p>
           <p class="hero-note">
-            As the lab grows, this page will gradually fill with the faces and stories
-            of students and postdocs who help define what Ji Quantum Lab becomes.
+            Below are the people who are helping to shape Ji Quantum Lab in its early years.
+            As the lab grows, this page will keep track of the faces, projects, and paths our members take.
           </p>
         </div>
       </section>
@@ -456,14 +450,15 @@
             <h2 class="section-title">Principal Investigator</h2>
           </div>
 
-          <div class="simple-card" style="display:flex; gap:1rem; align-items:flex-start; flex-wrap:wrap;">
-            <div style="width:120px; height:120px; border-radius:999px; background:#fff7ed; border:1px solid #fed7aa; overflow:hidden; flex-shrink:0;">
-              <img src="images/judy.jpg" alt="Zhurun (Judy) Ji" style="width:100%; height:100%; object-fit:cover;">
+          <div class="simple-card pi-card">
+            <div class="pi-photo">
+              <!-- Replace with your actual PI photo file -->
+              <img src="images/judy.jpg" alt="Zhurun (Judy) Ji">
             </div>
-            <div>
+            <div class="pi-text">
               <strong>Zhurun (Judy) Ji</strong><br/>
               Assistant Professor of Physics, MIT (starting 2025/26)
-              <p style="margin-top:0.6rem; font-size:0.9rem; color:var(--text-soft); max-width:32rem;">
+              <p>
                 Judy’s research connects microwave techniques with strongly correlated and
                 topological 2D systems. She enjoys working closely with students and postdocs
                 on both the physics story and the experimental details, and cares deeply about
@@ -474,33 +469,94 @@
         </div>
       </section>
 
-      <!-- Students & postdocs -->
+      <!-- Current team -->
       <section>
         <div class="container">
           <div class="section-header">
             <h2 class="section-title">Students &amp; postdocs</h2>
             <p class="section-sub">
-              The lab is in its early days. If you join now, you will help set many of the
-              scientific and cultural norms of Ji Quantum Lab.
+              If you join now, you will help set many of the scientific and cultural norms of Ji Quantum Lab.
             </p>
           </div>
 
           <div class="simple-card">
-            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.2rem;">
-              <!-- Example placeholder -->
-              <div style="display:flex; flex-direction:column; gap:0.6rem;">
-                <div style="width:100%; aspect-ratio:1/1; border-radius:1rem; background:#fff7ed; border:1px solid #fed7aa; overflow:hidden;">
-                  <img src="images/member-placeholder.jpg" alt="Future group member" style="width:100%; height:100%; object-fit:cover;">
+            <!-- Graduate students -->
+            <h3 class="people-subheading">Graduate students</h3>
+
+            <div class="people-grid">
+              <!-- Seungwon -->
+              <article class="person-card">
+                <div class="person-avatar">
+                  <!-- Put Seungwon's photo here -->
+                  <img src="images/seungwon-jung.jpg" alt="Seungwon Jung">
                 </div>
-                <div>
-                  <strong>Future group member</strong><br/>
-                  <span style="font-size:0.85rem; color:var(--text-soft);">
-                    Graduate student or postdoc · microwave transport / 2D materials
-                  </span>
+                <div class="person-name">Seungwon Jung</div>
+                <div class="person-role">Graduate student</div>
+                <p class="person-note">
+                  Working on microwave quantum transport and quantum materials.
+                </p>
+              </article>
+
+              <!-- Wenkai -->
+              <article class="person-card">
+                <div class="person-avatar">
+                  <img src="images/wenkai-cai.jpg" alt="Wenkai Cai">
                 </div>
-              </div>
-              <!-- Duplicate and edit blocks above as the group grows -->
+                <div class="person-name">Wenkai Cai</div>
+                <div class="person-role">Graduate student</div>
+                <p class="person-note">
+                  Interested in scanning probes and strongly correlated 2D systems.
+                </p>
+              </article>
+
+              <!-- Kevin -->
+              <article class="person-card">
+                <div class="person-avatar">
+                  <img src="images/kevin-multani.jpg" alt="Kevin Multani">
+                </div>
+                <div class="person-name">Kevin Multani</div>
+                <div class="person-role">Graduate student (affiliated)</div>
+                <p class="person-note">
+                  Collaborating on microwave techniques and quantum materials from SLAC.
+                </p>
+              </article>
             </div>
+
+            <!-- Undergraduate / visiting -->
+            <h3 class="people-subheading">Undergraduate &amp; visiting students</h3>
+
+            <div class="people-grid">
+              <!-- Andrew -->
+              <article class="person-card">
+                <div class="person-avatar">
+                  <img src="images/andrew-diaz.jpg" alt="Andrew Diaz">
+                </div>
+                <div class="person-name">Andrew Diaz</div>
+                <div class="person-role">Undergraduate student</div>
+                <p class="person-note">
+                  Exploring microwave experiments and quantum materials.
+                </p>
+              </article>
+            </div>
+
+            <p class="people-note">
+              We will keep this list updated as new students, postdocs, and visitors join Ji Quantum Lab.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alumni -->
+      <section>
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Alumni</h2>
+          </div>
+          <div class="simple-card">
+            <p>
+              As the group grows, we will keep a record of alumni and where they go next —
+              PhD programs, postdocs, industry, and beyond.
+            </p>
           </div>
         </div>
       </section>
