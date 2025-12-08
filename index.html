@@ -313,36 +313,37 @@
       position: absolute;
       bottom: 20%;
       left: 12%;
-      width: 130px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid rgba(107, 114, 128, 0.7);
-      background:
-        repeating-linear-gradient(
-          to right,
-          rgba(107, 114, 128, 0.85) 0 10px,
-          transparent 10px 18px
-        );
-      background-color: #f9f7f4;
-      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.16);
+      width: 150px;
+      height: 80px;
       cursor: grab;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
       z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .mw-meander:active {
       cursor: grabbing;
     }
 
-    .mw-meander.active {
-      border-color: var(--accent);
-      background:
-        repeating-linear-gradient(
-          to right,
-          rgba(194, 106, 61, 0.95) 0 10px,
-          rgba(248, 250, 252, 0.0) 10px 18px
-        );
-      box-shadow: 0 0 18px rgba(194, 106, 61, 0.8);
+    .mw-meander svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .mw-meander path {
+      fill: none;
+      stroke: #c0262d;
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 6px rgba(192, 38, 45, 0.45));
+      transition: filter 0.2s ease, stroke 0.2s ease;
+    }
+
+    .mw-meander.active path {
+      stroke: #e2723f;
+      filter: drop-shadow(0 0 14px rgba(226, 114, 63, 0.9));
     }
 
     /* 2D material sample: triangular-ish lattice */
@@ -579,7 +580,7 @@
           <div class="hero-art" id="hero-art">
             <div class="hero-grid-pattern"></div>
 
-            <div class="mw-label-small">Microwave tip &amp; circuit</div>
+            <div class="mw-label-small">Microwave tip &amp; meander</div>
             <div class="mw-label-sample">2D quantum material</div>
 
             <!-- Draggable tip -->
@@ -589,7 +590,23 @@
             </div>
 
             <!-- Draggable meander circuit -->
-            <div class="mw-meander" id="meander"></div>
+            <div class="mw-meander" id="meander">
+              <svg viewBox="0 0 150 80" aria-hidden="true" focusable="false">
+                <!-- simple meander path, serpentine like your sketch -->
+                <path d="
+                  M 15 10
+                  H 40
+                  V 70
+                  H 60
+                  V 10
+                  H 80
+                  V 70
+                  H 100
+                  V 10
+                  H 125
+                " />
+              </svg>
+            </div>
 
             <!-- Sample (triangular lattice-ish) -->
             <div class="mw-sample" id="sample">
@@ -694,16 +711,19 @@
       makeDraggable(tip);
       makeDraggable(meander);
 
+      function isOverlapping(a, b) {
+        const ar = a.getBoundingClientRect();
+        const br = b.getBoundingClientRect();
+        return (
+          ar.left < br.right &&
+          ar.right > br.left &&
+          ar.top < br.bottom &&
+          ar.bottom > br.top
+        );
+      }
+
       function checkCircuitSample() {
-        const mRect = meander.getBoundingClientRect();
-        const sRect = sample.getBoundingClientRect();
-
-        const overlap =
-          mRect.left < sRect.right &&
-          mRect.right > sRect.left &&
-          mRect.top < sRect.bottom &&
-          mRect.bottom > sRect.top;
-
+        const overlap = isOverlapping(meander, sample);
         if (overlap) {
           meander.classList.add('active');
           sample.classList.add('active');
@@ -711,6 +731,10 @@
           meander.classList.remove('active');
           sample.classList.remove('active');
         }
+      }
+
+      function tipOnSample() {
+        return isOverlapping(tip, sample);
       }
 
       function launchPhoton() {
@@ -728,7 +752,7 @@
         photon.style.top = (startY - 5) + 'px';
         photon.style.opacity = 1;
 
-        const duration = 1400;
+        const duration = 900;
         const startTime = performance.now();
 
         function step(now) {
@@ -759,7 +783,7 @@
         electron.classList.remove('active-electron');
         hole.classList.remove('active-hole');
 
-        void electron.offsetWidth; // force reflow
+        void electron.offsetWidth;
         void hole.offsetWidth;
 
         electron.classList.add('active-electron');
@@ -772,8 +796,13 @@
       }
 
       function photonLoop() {
-        launchPhoton();
-        setTimeout(photonLoop, 2300);
+        if (tipOnSample()) {
+          launchPhoton();
+          setTimeout(photonLoop, 1600);
+        } else {
+          // check again soon, but do not emit photon
+          setTimeout(photonLoop, 500);
+        }
       }
 
       photonLoop();
