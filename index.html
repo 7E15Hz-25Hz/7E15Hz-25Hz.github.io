@@ -159,7 +159,7 @@
 
     .hero-title {
       font-size: 2.3rem;
-      line-height: 1.12;
+      line-height: 1.18;
       margin: 0 0 0.65rem;
     }
 
@@ -175,7 +175,7 @@
     .hero-note {
       font-size: 0.86rem;
       color: var(--text-soft);
-      max-width: 32rem;
+      max-width: 34rem;
       margin-bottom: 1.2rem;
     }
 
@@ -193,7 +193,7 @@
       border-radius: 999px;
       border: 1px solid var(--accent);
       background: #fdf5ee;
-      color: #7b4122;
+      color: #6c3b21;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
@@ -201,7 +201,18 @@
     }
 
     .hero-link-btn:hover {
-      background: #f8ebdd;
+      background: #f3e3d7;
+    }
+
+    .hero-link-alt {
+      background: #ffffff;
+      border-color: rgba(194, 106, 61, 0.3);
+      color: var(--text-soft);
+    }
+
+    .hero-link-alt:hover {
+      background: #fdf5ee;
+      color: #6c3b21;
     }
 
     /* Hero art */
@@ -210,7 +221,8 @@
       height: 260px;
       border-radius: 1.3rem;
       background:
-        radial-gradient(circle at 20% 10%, rgba(194, 106, 61, 0.16), transparent 60%),
+        radial-gradient(circle at 20% 10%, rgba(194, 106, 61, 0.14), transparent 60%),
+        radial-gradient(circle at 80% 90%, rgba(107, 114, 128, 0.18), transparent 55%),
         #ffffff;
       border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
@@ -223,285 +235,208 @@
       border-radius: 1rem;
       border: 1px solid rgba(194, 106, 61, 0.18);
       background-image:
-        linear-gradient(to right, rgba(194, 106, 61, 0.16) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(194, 106, 61, 0.07) 1px, transparent 1px);
+        linear-gradient(to right, rgba(194, 106, 61, 0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(194, 106, 61, 0.08) 1px, transparent 1px);
       background-size: 26px 26px;
-      opacity: 0.85;
-    }
-
-    .hero-art { position: relative; }
-
-    /* Draggable microwave source (tip + loop circuit) */
-    .mw-source {
-      position: absolute;
-      top: 16%;
-      left: 24%;
-      width: 80px;
-      height: 90px;
-      cursor: grab;
-      z-index: 3;
-    }
-
-    .mw-source.dragging {
-      cursor: grabbing;
-    }
-
-    /* Tip (scanning tip) */
-    .mw-tip {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 18px solid transparent;
-      border-right: 18px solid transparent;
-      border-top: 34px solid var(--accent);
-      filter: drop-shadow(0 6px 8px rgba(148, 92, 43, 0.25));
-    }
-
-    .mw-tip-base {
-      position: absolute;
-      top: 34px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 56px;
-      height: 16px;
-      border-radius: 999px;
-      background: #fdf5ee;
-      border: 1px solid var(--border-subtle);
-    }
-
-    /* Josephson loop + capacitor (always attached to tip) */
-    .mw-loop {
-      position: absolute;
-      top: 46px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 68px;
-      height: 34px;
-    }
-
-    .mw-loop-bar {
-      position: absolute;
-      background: #8b7354;
-      border-radius: 999px;
-    }
-
-    .mw-loop-top {
-      top: 0;
-      left: 4px;
-      width: 60px;
-      height: 2px;
-    }
-
-    .mw-loop-bottom {
-      bottom: 0;
-      left: 4px;
-      width: 60px;
-      height: 2px;
-    }
-
-    .mw-loop-left {
-      top: 0;
-      left: 4px;
-      width: 2px;
-      height: 100%;
-    }
-
-    .mw-loop-right {
-      top: 0;
-      right: 4px;
-      width: 2px;
-      height: 100%;
-    }
-
-    .mw-jj {
-      position: absolute;
-      top: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 20px;
-      height: 10px;
-    }
-
-    .mw-jj-bar {
-      position: absolute;
-      top: 0;
-      width: 7px;
-      height: 6px;
-      background: #c26a3d;
-      border-radius: 2px;
-    }
-
-    .mw-jj-left { left: 0; }
-    .mw-jj-right { right: 0; }
-
-    .mw-cap {
-      position: absolute;
-      right: 6px;
-      top: 6px;
-      width: 14px;
-      height: 18px;
-    }
-
-    .mw-cap-plate {
-      position: absolute;
-      top: 0;
-      width: 3px;
-      height: 100%;
-      background: #8b7354;
-    }
-
-    .mw-cap-left { left: 0; }
-    .mw-cap-right { right: 0; }
-
-    .mw-loop-pulse {
-      position: absolute;
-      top: -4px;
-      left: 4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      border: 2px solid rgba(194, 106, 61, 0.8);
-      box-shadow: 0 0 10px rgba(194, 106, 61, 0.6);
-      animation: loopTravel 2.2s linear infinite;
-    }
-
-    @keyframes loopTravel {
-      0%   { transform: translate(0, 0); }
-      25%  { transform: translate(50px, 0); }
-      50%  { transform: translate(50px, 24px); }
-      75%  { transform: translate(0, 24px); }
-      100% { transform: translate(0, 0); }
-    }
-
-    .mw-photon {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fff;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 12px rgba(194, 106, 61, 0.75);
-      z-index: 4;
+      opacity: 0.9;
       pointer-events: none;
-    }
-
-    .eh-pair {
-      position: absolute;
-      width: 0;
-      height: 0;
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    .eh-dot {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.55rem;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .eh-electron {
-      background: #2563eb;
-      box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
-      animation: ehElectronMove 900ms ease-out forwards;
-    }
-
-    .eh-hole {
-      background: #e76f51;
-      box-shadow: 0 0 10px rgba(231, 111, 81, 0.6);
-      animation: ehHoleMove 900ms ease-out forwards;
-    }
-
-    @keyframes ehElectronMove {
-      0% { transform: translate(-5px, -5px); opacity: 1; }
-      100% { transform: translate(-18px, -8px); opacity: 0; }
-    }
-
-    @keyframes ehHoleMove {
-      0% { transform: translate(-5px, -5px); opacity: 1; }
-      100% { transform: translate(18px, 8px); opacity: 0; }
-    }
-
-    .mw-sheet {
-      position: absolute;
-      right: 8%;
-      bottom: 16%;
-      width: 34%;
-      height: 76px;
-      border-radius: 1rem;
-      background:
-        linear-gradient(135deg, rgba(194, 106, 61, 0.12), rgba(120, 140, 170, 0.05)),
-        repeating-linear-gradient(
-          60deg,
-          rgba(15, 23, 42, 0.06),
-          rgba(15, 23, 42, 0.06) 1px,
-          transparent 1px,
-          transparent 10px
-        ),
-        repeating-linear-gradient(
-          -60deg,
-          rgba(15, 23, 42, 0.06),
-          rgba(15, 23, 42, 0.06) 1px,
-          transparent 1px,
-          transparent 10px
-        );
-      background-size: auto, 18px 18px, 18px 18px;
-      border: 1px solid rgba(194, 106, 61, 0.55);
-      box-shadow: 0 10px 26px rgba(148, 92, 43, 0.15);
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .mw-sheet-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 10% 40%, rgba(249, 233, 215, 0.8), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0.7;
-      animation: sheetGlow 3.2s ease-in-out infinite alternate;
-    }
-
-    @keyframes sheetGlow {
-      0% { opacity: 0.4; transform: translateX(-4px); }
-      100% { opacity: 0.9; transform: translateX(4px); }
-    }
-
-    .mw-sheet-label {
-      position: absolute;
-      right: 10%;
-      bottom: 15%;
-      font-size: 0.7rem;
-      background: rgba(253, 247, 239, 0.98);
-      border-radius: 999px;
-      padding: 0.25rem 0.65rem;
-      border: 1px solid #e3d6c6;
-      color: #7b4122;
-      box-shadow: 0 8px 18px rgba(148, 92, 43, 0.18);
-      z-index: 2;
     }
 
     .mw-label-small {
       position: absolute;
       top: 10%;
-      left: 6%;
+      left: 7%;
       font-size: 0.7rem;
       padding: 0.24rem 0.6rem;
       border-radius: 999px;
-      background: rgba(253, 247, 239, 0.96);
-      border: 1px solid rgba(227, 214, 198, 0.9);
-      color: #7b4122;
+      background: rgba(253, 245, 238, 0.96);
+      border: 1px solid rgba(194, 106, 61, 0.5);
+      color: #6c3b21;
+      z-index: 3;
+    }
+
+    .mw-label-sample {
+      position: absolute;
+      right: 10%;
+      bottom: 15%;
+      font-size: 0.7rem;
+      padding: 0.24rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(253, 245, 238, 0.98);
+      border: 1px solid rgba(194, 106, 61, 0.5);
+      color: #6c3b21;
+      z-index: 3;
+    }
+
+    /* Draggable tip */
+    .mw-tip-container {
+      position: absolute;
+      top: 18%;
+      left: 24%;
+      width: 70px;
+      height: 90px;
+      cursor: grab;
+      z-index: 4;
+    }
+
+    .mw-tip-container:active {
+      cursor: grabbing;
+    }
+
+    .mw-tip-base {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      width: 56px;
+      height: 18px;
+      border-radius: 999px;
+      background: #fdf5ee;
+      border: 1px solid rgba(194, 106, 61, 0.7);
+      box-shadow: 0 6px 10px rgba(15, 23, 42, 0.15);
+    }
+
+    .mw-tip-body {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      border-bottom: 38px solid #c26a3d;
+      filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
+    }
+
+    /* Meander circuit (separate, draggable) */
+    .mw-meander {
+      position: absolute;
+      bottom: 20%;
+      left: 12%;
+      width: 130px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(107, 114, 128, 0.7);
+      background:
+        repeating-linear-gradient(
+          to right,
+          rgba(107, 114, 128, 0.85) 0 10px,
+          transparent 10px 18px
+        );
+      background-color: #f9f7f4;
+      box-shadow: 0 8px 14px rgba(15, 23, 42, 0.16);
+      cursor: grab;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      z-index: 4;
+    }
+
+    .mw-meander:active {
+      cursor: grabbing;
+    }
+
+    .mw-meander.active {
+      border-color: var(--accent);
+      background:
+        repeating-linear-gradient(
+          to right,
+          rgba(194, 106, 61, 0.95) 0 10px,
+          rgba(248, 250, 252, 0.0) 10px 18px
+        );
+      box-shadow: 0 0 18px rgba(194, 106, 61, 0.8);
+    }
+
+    /* 2D material sample: triangular-ish lattice */
+    .mw-sample {
+      position: absolute;
+      right: 9%;
+      bottom: 17%;
+      width: 34%;
+      height: 84px;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background:
+        linear-gradient(135deg, rgba(194, 106, 61, 0.14), rgba(148, 163, 184, 0.10)),
+        linear-gradient(135deg, transparent 75%, rgba(148, 163, 184, 0.38) 75%) 0 0 / 18px 18px,
+        linear-gradient(315deg, transparent 75%, rgba(148, 163, 184, 0.32) 75%) 0 0 / 18px 18px;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+      overflow: hidden;
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
       z-index: 2;
     }
 
+    .mw-sample.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 22px rgba(194, 106, 61, 0.75);
+    }
+
+    .mw-sample-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 40%, rgba(253, 245, 238, 0.9), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .mw-sample.active .mw-sample-glow {
+      opacity: 1;
+    }
+
+    /* Photon */
+    .mw-photon {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fbbf77;
+      box-shadow: 0 0 14px rgba(251, 191, 119, 0.9);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* Electron–hole particles */
+    .eh-particle {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .eh-particle.electron {
+      background: #3b82f6;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+    }
+
+    .eh-particle.hole {
+      border: 2px solid #e11d48;
+      background: rgba(248, 250, 252, 0.96);
+      box-shadow: 0 0 10px rgba(225, 29, 72, 0.7);
+    }
+
+    .eh-particle.electron.active-electron {
+      animation: electronFly 0.7s ease-out forwards;
+    }
+
+    .eh-particle.hole.active-hole {
+      animation: holeFly 0.7s ease-out forwards;
+    }
+
+    @keyframes electronFly {
+      0%   { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(-26px, -12px); opacity: 0; }
+    }
+
+    @keyframes holeFly {
+      0%   { transform: translate(0, 0); opacity: 1; }
+      100% { transform: translate(26px, 12px); opacity: 0; }
+    }
+
+    /* Sections */
     section { padding: 2.2rem 0 0.4rem; }
 
     .section-header {
@@ -520,320 +455,10 @@
     .section-sub {
       font-size: 0.9rem;
       color: var(--text-soft);
-      max-width: 26rem;
+      max-width: 32rem;
     }
 
+    /* News */
     .simple-card {
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
-      border: 1px solid var(--border-subtle);
-      margin-bottom: 1.5rem;
-      box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .news-list {
-      list-style: none;
-      margin: 0.4rem 0 0;
-      padding: 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    .news-item {
-      display: flex;
-      gap: 0.6rem;
-      padding: 0.45rem 0;
-      border-bottom: 1px dashed #e3d6c6;
-    }
-
-    .news-item:last-child { border-bottom: none; }
-
-    .news-date {
-      font-size: 0.8rem;
-      color: #8b7354;
-      min-width: 5.1rem;
-      flex-shrink: 0;
-    }
-
-    .news-text { flex: 1; }
-
-    .site-footer {
-      border-top: 1px solid var(--border-subtle);
-      margin-top: 2rem;
-      padding: 1.4rem 0 1.8rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      text-align: center;
-    }
-
-    .hero,
-    .simple-card {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: fadeUp 0.7s ease-out forwards;
-    }
-
-    .simple-card {
-      animation-delay: 0.25s;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header class="site-header">
-      <div class="container header-inner">
-        <div class="logo">
-          <div class="logo-mark">JiQL</div>
-          <div>
-            <div class="logo-text-main">Ji Quantum Lab</div>
-            <div class="logo-text-sub">MIT Physics · Quantum materials in the microwave world</div>
-          </div>
-        </div>
-        <nav class="nav">
-          <a href="index.html">Home</a>
-          <a href="research.html">Research</a>
-          <a href="people.html">People</a>
-          <a href="publications.html">Publications</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- Hero -->
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow">Ji Quantum Lab · MIT</div>
-            <h1 class="hero-title">
-              Seeing quantum materials<br />
-              in the microwave world.
-            </h1>
-            <p class="hero-tagline">
-              We build microwave transport and scanning experiments to explore
-              correlated and topological phases in 2D materials, and to learn how
-              to program new quantum states of matter.
-            </p>
-            <p class="hero-note">
-              <strong>We are growing.</strong> The lab will formally launch at MIT in 2025–2026.
-              Students and postdocs interested in building new tools and new physics are very welcome.
-            </p>
-            <div class="hero-links">
-              <a class="hero-link-btn" href="research.html">See research directions →</a>
-              <a class="hero-link-btn" href="people.html">Meet the people →</a>
-            </div>
-          </div>
-
-          <div class="hero-art">
-            <div class="hero-grid-pattern"></div>
-
-            <!-- labels -->
-            <div class="mw-label-small">Microwave Josephson circuit</div>
-
-            <!-- draggable source (tip + Josephson loop + capacitor) -->
-            <div class="mw-source" id="mw-source">
-              <div class="mw-tip"></div>
-              <div class="mw-tip-base"></div>
-
-              <div class="mw-loop">
-                <div class="mw-loop-bar mw-loop-top"></div>
-                <div class="mw-loop-bar mw-loop-bottom"></div>
-                <div class="mw-loop-bar mw-loop-left"></div>
-                <div class="mw-loop-bar mw-loop-right"></div>
-
-                <div class="mw-jj">
-                  <div class="mw-jj-bar mw-jj-left"></div>
-                  <div class="mw-jj-bar mw-jj-right"></div>
-                </div>
-
-                <div class="mw-cap">
-                  <div class="mw-cap-plate mw-cap-left"></div>
-                  <div class="mw-cap-plate mw-cap-right"></div>
-                </div>
-
-                <div class="mw-loop-pulse"></div>
-              </div>
-            </div>
-
-            <!-- sheet -->
-            <div class="mw-sheet">
-              <div class="mw-sheet-glow"></div>
-            </div>
-            <div class="mw-sheet-label">2D quantum material</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- News -->
-      <section id="news">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">News &amp; updates</h2>
-            <p class="section-sub">
-              A few snapshots of what we are building and planning as the lab takes shape.
-            </p>
-          </div>
-
-          <div class="simple-card">
-            <ul class="news-list">
-              <li class="news-item">
-                <div class="news-date">Aug&nbsp;2025</div>
-                <div class="news-text">
-                  Welcome Won and Wenkai, our first two graduate students!
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      © 2025 Ji Quantum Lab · MIT
-    </footer>
-  </div>
-
-  <script>
-    (function() {
-      const hero = document.querySelector('.hero-art');
-      const source = document.getElementById('mw-source');
-      const sheet = document.querySelector('.mw-sheet');
-
-      if (!hero || !source || !sheet) return;
-
-      let isDragging = false;
-      let offsetX = 0;
-      let offsetY = 0;
-
-      source.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        isDragging = true;
-        source.classList.add('dragging');
-
-        const sourceRect = source.getBoundingClientRect();
-        offsetX = e.clientX - sourceRect.left;
-        offsetY = e.clientY - sourceRect.top;
-
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
-      });
-
-      function onMouseMove(e) {
-        if (!isDragging) return;
-
-        const heroRect = hero.getBoundingClientRect();
-        const sourceRect = source.getBoundingClientRect();
-
-        let x = e.clientX - heroRect.left - offsetX;
-        let y = e.clientY - heroRect.top - offsetY;
-
-        const maxX = heroRect.width - sourceRect.width;
-        const maxY = heroRect.height - sourceRect.height;
-        x = Math.max(0, Math.min(maxX, x));
-        y = Math.max(0, Math.min(maxY, y));
-
-        source.style.left = x + 'px';
-        source.style.top = y + 'px';
-      }
-
-      function onMouseUp() {
-        if (!isDragging) return;
-        isDragging = false;
-        source.classList.remove('dragging');
-
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-
-        const srcRect = source.getBoundingClientRect();
-        const sheetRect = sheet.getBoundingClientRect();
-
-        const overlapping = !(
-          srcRect.right < sheetRect.left ||
-          srcRect.left > sheetRect.right ||
-          srcRect.bottom < sheetRect.top ||
-          srcRect.top > sheetRect.bottom
-        );
-
-        if (overlapping) {
-          launchPhoton();
-        }
-      }
-
-      function launchPhoton() {
-        const photon = document.createElement('div');
-        photon.className = 'mw-photon';
-        hero.appendChild(photon);
-
-        const heroRect = hero.getBoundingClientRect();
-        const sourceRect = source.getBoundingClientRect();
-        const sheetRect = sheet.getBoundingClientRect();
-
-        const startX = sourceRect.left + sourceRect.width / 2 - heroRect.left;
-        const startY = sourceRect.top + sourceRect.height / 2 - heroRect.top;
-
-        const endX = sheetRect.left + sheetRect.width / 2 - heroRect.left;
-        const endY = sheetRect.top + sheetRect.height * 0.25 - heroRect.top;
-
-        photon.style.left = startX + 'px';
-        photon.style.top = startY + 'px';
-
-        const dx = endX - startX;
-        const dy = endY - startY;
-
-        const animation = photon.animate(
-          [
-            { transform: 'translate(0, 0)', opacity: 1 },
-            { transform: 'translate(' + dx + 'px, ' + dy + 'px)', opacity: 0.2 }
-          ],
-          {
-            duration: 800,
-            easing: 'ease-out'
-          }
-        );
-
-        animation.onfinish = () => {
-          photon.remove();
-          createElectronHole(endX, endY);
-        };
-      }
-
-      function createElectronHole(x, y) {
-        const pair = document.createElement('div');
-        pair.className = 'eh-pair';
-        hero.appendChild(pair);
-
-        pair.style.left = x + 'px';
-        pair.style.top = y + 'px';
-
-        const electron = document.createElement('div');
-        electron.className = 'eh-dot eh-electron';
-        electron.textContent = '−';
-
-        const hole = document.createElement('div');
-        hole.className = 'eh-dot eh-hole';
-        hole.textContent = '+';
-
-        electron.style.left = '-5px';
-        electron.style.top = '-5px';
-        hole.style.left = '-5px';
-        hole.style.top = '-5px';
-
-        pair.appendChild(electron);
-        pair.appendChild(hole);
-
-        setTimeout(() => {
-          pair.remove();
-        }, 950);
-      }
-    })();
-  </script>
-</body>
-</html>
+      background: var(--card);
+      border-radius: var(--radius-l
