@@ -231,13 +231,13 @@
 
     .hero-art { position: relative; }
 
-    /* Draggable microwave source wrapper */
+    /* Draggable microwave source (tip + loop circuit) */
     .mw-source {
       position: absolute;
       top: 16%;
       left: 24%;
-      width: 56px;
-      height: 52px;
+      width: 80px;
+      height: 90px;
       cursor: grab;
       z-index: 3;
     }
@@ -272,102 +272,110 @@
       border: 1px solid var(--border-subtle);
     }
 
-    /* Circuit to the sheet */
-    .mw-circuit {
+    /* Josephson loop + capacitor (always attached to tip) */
+    .mw-loop {
       position: absolute;
-      left: 4%;
-      bottom: 32%;
-      width: 46%;
-      height: 40px;
-      z-index: 1;
+      top: 46px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 68px;
+      height: 34px;
     }
 
-    .mw-line {
+    .mw-loop-bar {
       position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(to right, #e4d4c3, var(--accent));
+      background: #8b7354;
       border-radius: 999px;
-      transform: translateY(-50%);
     }
 
-    .mw-node {
+    .mw-loop-top {
+      top: 0;
+      left: 4px;
+      width: 60px;
+      height: 2px;
+    }
+
+    .mw-loop-bottom {
+      bottom: 0;
+      left: 4px;
+      width: 60px;
+      height: 2px;
+    }
+
+    .mw-loop-left {
+      top: 0;
+      left: 4px;
+      width: 2px;
+      height: 100%;
+    }
+
+    .mw-loop-right {
+      top: 0;
+      right: 4px;
+      width: 2px;
+      height: 100%;
+    }
+
+    .mw-jj {
       position: absolute;
-      top: 50%;
-      width: 9px;
-      height: 9px;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 10px;
+    }
+
+    .mw-jj-bar {
+      position: absolute;
+      top: 0;
+      width: 7px;
+      height: 6px;
+      background: #c26a3d;
+      border-radius: 2px;
+    }
+
+    .mw-jj-left { left: 0; }
+    .mw-jj-right { right: 0; }
+
+    .mw-cap {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      width: 14px;
+      height: 18px;
+    }
+
+    .mw-cap-plate {
+      position: absolute;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #8b7354;
+    }
+
+    .mw-cap-left { left: 0; }
+    .mw-cap-right { right: 0; }
+
+    .mw-loop-pulse {
+      position: absolute;
+      top: -4px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid var(--accent);
-      transform: translate(-50%, -50%);
+      border: 2px solid rgba(194, 106, 61, 0.8);
+      box-shadow: 0 0 10px rgba(194, 106, 61, 0.6);
+      animation: loopTravel 2.2s linear infinite;
     }
 
-    .mw-node-1 { left: 18%; }
-    .mw-node-2 { left: 48%; }
-
-    .mw-pulse {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(194, 106, 61, 0.7);
-      transform: translate(-50%, -50%);
-      animation: pulseTravel 2.4s linear infinite;
+    @keyframes loopTravel {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(50px, 0); }
+      50%  { transform: translate(50px, 24px); }
+      75%  { transform: translate(0, 24px); }
+      100% { transform: translate(0, 0); }
     }
 
-    @keyframes pulseTravel {
-      0% {
-        left: 0%;
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      80% {
-        left: 100%;
-        opacity: 1;
-      }
-      100% {
-        left: 100%;
-        opacity: 0;
-      }
-    }
-
-    /* Sinusoidal microwave wave between tip and sheet (inline SVG) */
-    .mw-sine {
-      position: absolute;
-      left: 32%;
-      top: 34%;
-      width: 40%;
-      height: 46px;
-      overflow: visible;
-      z-index: 1;
-    }
-
-    .mw-sine path {
-      stroke: var(--accent);
-      stroke-width: 2;
-      fill: none;
-      stroke-linecap: round;
-      stroke-dasharray: 10 12;
-      animation: sineTravel 2.5s linear infinite;
-    }
-
-    @keyframes sineTravel {
-      0% {
-        stroke-dashoffset: 0;
-      }
-      100% {
-        stroke-dashoffset: -44;
-      }
-    }
-
-    /* Photon that flies from source to sheet */
     .mw-photon {
       position: absolute;
       width: 10px;
@@ -380,7 +388,6 @@
       pointer-events: none;
     }
 
-    /* Electron–hole pair */
     .eh-pair {
       position: absolute;
       width: 0;
@@ -415,28 +422,15 @@
     }
 
     @keyframes ehElectronMove {
-      0% {
-        transform: translate(-5px, -5px);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-18px, -8px);
-        opacity: 0;
-      }
+      0% { transform: translate(-5px, -5px); opacity: 1; }
+      100% { transform: translate(-18px, -8px); opacity: 0; }
     }
 
     @keyframes ehHoleMove {
-      0% {
-        transform: translate(-5px, -5px);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(18px, 8px);
-        opacity: 0;
-      }
+      0% { transform: translate(-5px, -5px); opacity: 1; }
+      100% { transform: translate(18px, 8px); opacity: 0; }
     }
 
-    /* Sheet (2D material with triangular lattice) */
     .mw-sheet {
       position: absolute;
       right: 8%;
@@ -446,7 +440,6 @@
       border-radius: 1rem;
       background:
         linear-gradient(135deg, rgba(194, 106, 61, 0.12), rgba(120, 140, 170, 0.05)),
-        /* triangular lattice */
         repeating-linear-gradient(
           60deg,
           rgba(15, 23, 42, 0.06),
@@ -478,14 +471,8 @@
     }
 
     @keyframes sheetGlow {
-      0% {
-        opacity: 0.4;
-        transform: translateX(-4px);
-      }
-      100% {
-        opacity: 0.9;
-        transform: translateX(4px);
-      }
+      0% { opacity: 0.4; transform: translateX(-4px); }
+      100% { opacity: 0.9; transform: translateX(4px); }
     }
 
     .mw-sheet-label {
@@ -515,7 +502,6 @@
       z-index: 2;
     }
 
-    /* Sections */
     section { padding: 2.2rem 0 0.4rem; }
 
     .section-header {
@@ -537,7 +523,6 @@
       max-width: 26rem;
     }
 
-    /* News */
     .simple-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
@@ -575,7 +560,6 @@
 
     .news-text { flex: 1; }
 
-    /* Footer */
     .site-footer {
       border-top: 1px solid var(--border-subtle);
       margin-top: 2rem;
@@ -585,7 +569,6 @@
       text-align: center;
     }
 
-    /* Animations */
     .hero,
     .simple-card {
       opacity: 0;
@@ -598,14 +581,8 @@
     }
 
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -659,40 +636,38 @@
             <div class="hero-grid-pattern"></div>
 
             <!-- labels -->
-            <div class="mw-label-small">Microwave circuit</div>
+            <div class="mw-label-small">Microwave Josephson circuit</div>
 
-            <!-- draggable source (tip + base) -->
+            <!-- draggable source (tip + Josephson loop + capacitor) -->
             <div class="mw-source" id="mw-source">
               <div class="mw-tip"></div>
               <div class="mw-tip-base"></div>
-            </div>
 
-            <!-- circuit -->
-            <div class="mw-circuit">
-              <div class="mw-line"></div>
-              <div class="mw-node mw-node-1"></div>
-              <div class="mw-node mw-node-2"></div>
-              <div class="mw-pulse"></div>
-            </div>
+              <div class="mw-loop">
+                <div class="mw-loop-bar mw-loop-top"></div>
+                <div class="mw-loop-bar mw-loop-bottom"></div>
+                <div class="mw-loop-bar mw-loop-left"></div>
+                <div class="mw-loop-bar mw-loop-right"></div>
 
-            <!-- sinusoidal microwave wave between tip and sheet -->
-            <svg class="mw-sine" viewBox="0 0 160 40" preserveAspectRatio="none">
-              <path d="M0 20
-                       Q 10 5 20 20
-                       T 40 20
-                       T 60 20
-                       T 80 20
-                       T 100 20
-                       T 120 20
-                       T 140 20
-                       T 160 20" />
-            </svg>
+                <div class="mw-jj">
+                  <div class="mw-jj-bar mw-jj-left"></div>
+                  <div class="mw-jj-bar mw-jj-right"></div>
+                </div>
+
+                <div class="mw-cap">
+                  <div class="mw-cap-plate mw-cap-left"></div>
+                  <div class="mw-cap-plate mw-cap-right"></div>
+                </div>
+
+                <div class="mw-loop-pulse"></div>
+              </div>
+            </div>
 
             <!-- sheet -->
             <div class="mw-sheet">
               <div class="mw-sheet-glow"></div>
             </div>
-            <div class="mw-sheet-label">2D quantum material · triangular lattice</div>
+            <div class="mw-sheet-label">2D quantum material</div>
           </div>
         </div>
       </section>
@@ -710,24 +685,9 @@
           <div class="simple-card">
             <ul class="news-list">
               <li class="news-item">
-                <div class="news-date">Dec&nbsp;2025</div>
+                <div class="news-date">Aug&nbsp;2025</div>
                 <div class="news-text">
-                  Ji Quantum Lab website goes live. We are preparing for the official
-                  launch of the lab at MIT and beginning to recruit students and postdocs.
-                </div>
-              </li>
-              <li class="news-item">
-                <div class="news-date">Fall&nbsp;2025</div>
-                <div class="news-text">
-                  Planning our first generation of microwave quantum transport and
-                  scanning experiments on 2D materials. More details to come.
-                </div>
-              </li>
-              <li class="news-item">
-                <div class="news-date">Ongoing</div>
-                <div class="news-text">
-                  If you are interested in microwave techniques, 2D materials,
-                  or programmable quantum phases, you are warmly encouraged to reach out.
+                  Welcome Won and Wenkai, our first two graduate students!
                 </div>
               </li>
             </ul>
@@ -775,7 +735,6 @@
         let x = e.clientX - heroRect.left - offsetX;
         let y = e.clientY - heroRect.top - offsetY;
 
-        // clamp inside hero-art
         const maxX = heroRect.width - sourceRect.width;
         const maxY = heroRect.height - sourceRect.height;
         x = Math.max(0, Math.min(maxX, x));
@@ -793,7 +752,6 @@
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
 
-        // Only launch photon if source overlaps sheet
         const srcRect = source.getBoundingClientRect();
         const sheetRect = sheet.getBoundingClientRect();
 
@@ -852,7 +810,6 @@
         pair.className = 'eh-pair';
         hero.appendChild(pair);
 
-        // position pair at impact point
         pair.style.left = x + 'px';
         pair.style.top = y + 'px';
 
@@ -864,7 +821,6 @@
         hole.className = 'eh-dot eh-hole';
         hole.textContent = '+';
 
-        // start overlapping near the impact point
         electron.style.left = '-5px';
         electron.style.top = '-5px';
         hole.style.left = '-5px';
