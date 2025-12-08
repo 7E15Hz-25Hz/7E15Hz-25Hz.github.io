@@ -26,7 +26,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, #ffedd5 0, #fffbf2 40%, #ffffff 100%);
+        radial-gradient(circle at top left, #fff8ef 0, #fffcf7 40%, #ffffff 100%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
       background-size: 140% 140%;
@@ -82,13 +82,15 @@
     }
 
     .logo-text-main {
-      font-weight: 600;
-      font-size: 0.96rem;
+      font-weight: 700;
+      font-size: 1.18rem;
+      line-height: 1.1;
     }
 
     .logo-text-sub {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       color: var(--text-soft);
+      margin-top: 0.08rem;
     }
 
     .nav {
@@ -139,17 +141,6 @@
       padding: 2.8rem 0 2.0rem;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-      gap: 2.2rem;
-      align-items: center;
-    }
-
-    @media (max-width: 880px) {
-      .hero-grid { grid-template-columns: minmax(0, 1fr); }
-    }
-
     .eyebrow {
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -159,7 +150,7 @@
     }
 
     .hero-title {
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       line-height: 1.12;
       margin: 0 0 0.65rem;
     }
@@ -169,39 +160,18 @@
     .hero-tagline {
       font-size: 1.0rem;
       color: var(--text-soft);
-      max-width: 32rem;
-      margin-bottom: 0.9rem;
+      max-width: 34rem;
+      margin-bottom: 0.8rem;
     }
 
     .hero-note {
       font-size: 0.86rem;
       color: var(--text-soft);
-      max-width: 32rem;
-      margin-bottom: 1.2rem;
+      max-width: 34rem;
+      margin-bottom: 0.4rem;
     }
 
     .hero-note strong { color: var(--text-main); }
-
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .hero-link-btn {
-      font-size: 0.85rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid #f97316;
-      background: #fff7ed;
-      color: #9a3412;
-      font-weight: 500;
-    }
-
-    .hero-link-secondary {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-    }
 
     /* Sections */
     section { padding: 2.2rem 0 0.4rem; }
@@ -225,15 +195,78 @@
       max-width: 26rem;
     }
 
+    /* Card */
     .simple-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 1.25rem;
+      padding: 1.4rem 1.4rem 1.3rem;
       border: 1px solid var(--border-subtle);
       margin-bottom: 1.5rem;
       box-shadow: 0 14px 32px rgba(148, 92, 43, 0.06);
       font-size: 0.9rem;
       color: var(--text-soft);
+    }
+
+    /* Publications */
+    .pub-year {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 1.3rem 0 0.4rem;
+      color: var(--text-main);
+    }
+
+    .pub-year:first-of-type {
+      margin-top: 0.4rem;
+    }
+
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pub-item {
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed #fcd9b6;
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .pub-title a {
+      text-decoration: none;
+      color: inherit;
+      border-bottom: 1px dotted rgba(249, 115, 22, 0.4);
+    }
+
+    .pub-title a:hover {
+      border-bottom-style: solid;
+      border-bottom-color: rgba(249, 115, 22, 0.9);
+    }
+
+    .pub-authors {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      margin-top: 0.12rem;
+    }
+
+    .pub-venue {
+      font-size: 0.86rem;
+      color: #9a7b4f;
+      margin-top: 0.06rem;
+    }
+
+    .pub-note {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-top: 0.2rem;
     }
 
     /* Footer */
@@ -298,84 +331,234 @@
     </header>
 
     <main>
+      <!-- Hero -->
       <section class="hero">
         <div class="container">
           <div class="eyebrow">Publications</div>
-          <h1 class="hero-title">Selected work from Ji Quantum Lab &amp; collaborators</h1>
+          <h1 class="hero-title">Selected papers from Ji Quantum Lab and collaborators</h1>
           <p class="hero-tagline">
-            This page will collect papers related to microwave quantum transport and imaging,
-            programmable phases in 2D materials, and earlier work that shaped the lab.
+            A sample of our work on microwave sensing, quantum materials, and topological phases,
+            from nanoscale probes to strongly correlated states and light–matter interactions.
           </p>
           <p class="hero-note">
-            This list is a work in progress. For a more complete and up-to-date record,
-            you can also visit external profiles such as Google Scholar.
+            Author list conventions follow the original publications. Asterisks (*) indicate equal contributors
+            where noted by the journal.
           </p>
         </div>
       </section>
 
+      <!-- Publication list -->
       <section>
         <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Selected publications</h2>
-            <p class="section-sub">
-              A short list highlighting themes that connect to the lab’s directions:
-              microwave probes, correlated and topological phases, and novel 2D materials.
-            </p>
-          </div>
-
           <div class="simple-card">
-            <ul style="list-style:none; padding-left:0; margin:0;">
-              <li style="margin-bottom:0.8rem;">
-                <strong>[1]</strong>
-                <span style="font-size:0.9rem;">
-                  Your Name, <em>et al.</em>,
-                  “Title of a representative paper related to correlated 2D materials,”
-                  <em>Journal Name</em> (Year).
-                </span>
+            <!-- 2025 -->
+            <h2 class="pub-year">2025</h2>
+            <ul class="pub-list">
+              <li class="pub-item">
+                <div class="pub-title">
+                  Local Microwave Sensing of Excitons and Their Electrical Environment
+                </div>
+                <div class="pub-authors">
+                  Zhurun Ji, Mark E. Barber, Ziyan Zhu, Carlos R. Kometter, Jiachen Yu,
+                  Kenji Watanabe, Takashi Taniguchi, Mengkun Liu, Thomas P. Devereaux,
+                  Ben Feldman, Zhixun Shen
+                </div>
+                <div class="pub-venue">
+                  <em>Nature Communications</em> (2025)
+                </div>
               </li>
-              <li style="margin-bottom:0.8rem;">
-                <strong>[2]</strong>
-                <span style="font-size:0.9rem;">
-                  Your Name, <em>et al.</em>,
-                  “Title of a paper on microwave or advanced transport techniques,”
-                  <em>Journal Name</em> (Year).
-                </span>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://scholar.google.com/scholar?cluster=7511708919076001157" target="_blank" rel="noopener noreferrer">
+                    Voyaging beneath wavelengths with a scattering tip
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Xinyu Liu, Zhurun Ji
+                </div>
+                <div class="pub-venue">
+                  <em>Photonics Insights</em> <strong>4</strong>(2), C03–C03 (2025)
+                </div>
               </li>
-              <li style="margin-bottom:0.2rem;">
-                <strong>[3]</strong>
-                <span style="font-size:0.9rem;">
-                  Your Name, <em>et al.</em>,
-                  “Another key work that helps define the lab’s research space,”
-                  <em>Journal Name</em> (Year).
-                </span>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://www.cell.com/cell-reports-physical-science/fulltext/S2666-3864(24)00001-9" target="_blank" rel="noopener noreferrer">
+                    Implicit neural representations for experimental steering of advanced experiments
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Zhantao Chen, Alexander N. Petsch, Zhurun Ji, Sathya R. Chitturi, Cheng Peng,
+                  Chunjing Jia, Alexander I. Kolesnikov, Jana B. Thayer, Joshua J. Turner
+                </div>
+                <div class="pub-venue">
+                  <em>Cell Reports Physical Science</em> <strong>6</strong>(1), (2025)
+                </div>
               </li>
             </ul>
-          </div>
-        </div>
-      </section>
 
-      <section>
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">More complete lists</h2>
-            <p class="section-sub">
-              For full, automatically updated publication lists, you may refer to external profiles.
-            </p>
-          </div>
+            <!-- 2024 -->
+            <h2 class="pub-year">2024</h2>
+            <ul class="pub-list">
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://www.nature.com/articles/s41586-023-07062-8" target="_blank" rel="noopener noreferrer">
+                    Opto-twistronic Hall effect in a three-dimensional spiral lattice
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Zhurun Ji, Yuzhou Zhao, Yicong Chen, Ziyan Zhu, Yuhui Wang, Wenjing Liu,
+                  Gaurav Modi, Eugene J. Mele, Song Jin, Ritesh Agarwal
+                </div>
+                <div class="pub-venue">
+                  <em>Nature</em> <strong>634</strong>, 69–73 (2024)
+                </div>
+              </li>
 
-          <div class="simple-card">
-            <p>
-              You can find more publications and citation information on:
-            </p>
-            <ul style="font-size:0.9rem; color:var(--text-soft);">
-              <li>Google Scholar – <em>(add your profile link here)</em></li>
-              <li>ORCID / Inspire / other profiles – <em>(optional)</em></li>
-              <li>Previous institutional pages – <em>(optional)</em></li>
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://arxiv.org/abs/2307.XXXXX" target="_blank" rel="noopener noreferrer">
+                    Local probe of bulk and edge states in a fractional Chern insulator
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Zhurun Ji*, Heonjoon Park*, Mark E. Barber, Chaowei Hu, Kenji Watanabe,
+                  Takashi Taniguchi, Jiun-Haw Chu, Xiaodong Xu, Zhi-Xun Shen
+                </div>
+                <div class="pub-venue">
+                  <em>Nature</em> <strong>635</strong>(8039), 578–583 (2024)
+                </div>
+                <div class="pub-note">
+                  *Equal-contribution authors.
+                </div>
+              </li>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://scholar.google.com/scholar?cluster=10101010101010101010" target="_blank" rel="noopener noreferrer">
+                    Optically Triggered Emergent Mesostructures in Monolayer WS<sub>2</sub>
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Young-Chul Leem, Zhenyao Fang, Yun-Kyung Lee, Na-Yeong Kim, Arvin Kakekhani,
+                  Wenjing Liu, Sung-Pyo Cho, Cheolsu Kim, Yuhui Wang, Zhurun Ji, Abhirup Patra,
+                  Leeor Kronik, Andrew M. Rappe, Sang-Youp Yim, Ritesh Agarwal
+                </div>
+                <div class="pub-venue">
+                  <em>Nano Letters</em> <strong>24</strong>(18) (2025)
+                </div>
+              </li>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://link.springer.com/article/10.1007/s10909-024-03000-0" target="_blank" rel="noopener noreferrer">
+                    Characterization of two fast-turnaround dry dilution refrigerators for scanning probe microscopy
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Mark E. Barber, Yifan Li, Jared Gibson, Jiachen Yu, Zhanzhi Jiang, Yuwen Hu,
+                  Zhurun Ji, Nabhanila Nandi, Jesse C. Hoke, Logan Bishop-Van Horn,
+                  Gilbert R. Arias, Dale J. Van Harlingen, Kathryn A. Moler,
+                  Zhi-Xun Shen, Angela Kou, Benjamin E. Feldman
+                </div>
+                <div class="pub-venue">
+                  <em>Journal of Low Temperature Physics</em> <strong>215</strong>(1), 1–23 (2024)
+                </div>
+              </li>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://arxiv.org/abs/2311.04211" target="_blank" rel="noopener noreferrer">
+                    Harnessing excitons at the nanoscale — photoelectrical platform for quantitative sensing and imaging
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Zhurun Ji, Mark E. Barber, Ziyan Zhu, Carlos R. Kometter, Jiachen Yu,
+                  Kenji Watanabe, Takashi Taniguchi, Mengkun Liu, Thomas P. Devereaux,
+                  Ben Feldman, Zhixun Shen
+                </div>
+                <div class="pub-venue">
+                  arXiv:2311.04211 (2023)
+                </div>
+              </li>
             </ul>
-            <p style="margin-top:0.8rem;">
-              As Ji Quantum Lab grows, this page will also include publications from
-              students and postdocs, grouped by lab research thrust.
-            </p>
+
+            <!-- 2023 -->
+            <h2 class="pub-year">2023</h2>
+            <ul class="pub-list">
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://www.nature.com/articles/s41467-023-40360-3" target="_blank" rel="noopener noreferrer">
+                    Capturing dynamical correlations using implicit neural representations
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Sathya R. Chitturi*, Zhurun Ji*, Alexander N. Petsch*, Cheng Peng, Zhantao Chen,
+                  Rajan Plumley, Mike Dunne, Sougata Mardanya, Sugata Chowdhury, Hongwei Chen,
+                  Arun Bansil, Adrian Feiguin, Alexander I. Kolesnikov, Dharmalingam Prabhakaran,
+                  Stephen M. Hayden, Daniel Ratner, Chunjing Jia, Youssef Nashed, Joshua J. Turner
+                </div>
+                <div class="pub-venue">
+                  <em>Nature Communications</em> <strong>14</strong>(1) (2023)
+                </div>
+                <div class="pub-note">
+                  *Equal-contribution authors.
+                </div>
+              </li>
+            </ul>
+
+            <!-- Selected pre-2023 -->
+            <h2 class="pub-year">Selected publications before 2023</h2>
+            <ul class="pub-list">
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://www.science.org/doi/10.1126/science.aba9192" target="_blank" rel="noopener noreferrer">
+                    Photocurrent detection of the orbital angular momentum of light
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Zhurun Ji, Wenjing Liu, Sergiy Krylyuk, Xiaopeng Fan, Zhifeng Zhang,
+                  Anlian Pan, Liang Feng, Albert Davydov, Ritesh Agarwal
+                </div>
+                <div class="pub-venue">
+                  <em>Science</em> <strong>368</strong>(6492) (2020)
+                </div>
+              </li>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://www.science.org/doi/10.1126/science.aay8413" target="_blank" rel="noopener noreferrer">
+                    Generation of helical topological exciton-polaritons
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Wenjing Liu, Zhurun Ji, Yuhui Wang, Gaurav Modi, Minsoo Hwang, Biyuan Zheng,
+                  Volker J. Sorger, Anlian Pan, Ritesh Agarwal
+                </div>
+                <div class="pub-venue">
+                  <em>Science</em> <strong>370</strong>(6516) (2020)
+                </div>
+              </li>
+
+              <li class="pub-item">
+                <div class="pub-title">
+                  <a href="https://www.nature.com/articles/s41563-019-0391-7" target="_blank" rel="noopener noreferrer">
+                    Spatially dispersive circular photogalvanic effect in a Weyl semimetal
+                  </a>
+                </div>
+                <div class="pub-authors">
+                  Zhurun Ji*, Gerui Liu*, Zachariah Addison, Wenjing Liu, Peng Yu, Heng Gao,
+                  Zheng Liu, Andrew M. Rappe, Charles L. Kane, Eugene J. Mele, Ritesh Agarwal
+                </div>
+                <div class="pub-venue">
+                  <em>Nature Materials</em> <strong>18</strong>, 955–962 (2019)
+                </div>
+                <div class="pub-note">
+                  *Equal-contribution authors.
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
