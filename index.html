@@ -223,18 +223,7 @@
       overflow: hidden;
     }
 
-    .hero-grid-pattern {
-      position: absolute;
-      inset: 14%;
-      border-radius: 1rem;
-      border: 1px solid rgba(194, 106, 61, 0.18);
-      background-image:
-        linear-gradient(to right, rgba(194, 106, 61, 0.18) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(194, 106, 61, 0.08) 1px, transparent 1px);
-      background-size: 26px 26px;
-      opacity: 0.9;
-      pointer-events: none;
-    }
+    /* (grid background removed) */
 
     .mw-label-small {
       position: absolute;
@@ -262,13 +251,13 @@
       z-index: 3;
     }
 
-    /* Draggable tip (downward triangle only) */
+    /* Draggable tip – narrower and longer */
     .mw-tip-container {
       position: absolute;
-      top: 18%;
+      top: 16%;
       left: 24%;
-      width: 40px;
-      height: 60px;
+      width: 26px;
+      height: 80px;
       cursor: grab;
       z-index: 4;
     }
@@ -284,13 +273,13 @@
       transform: translateX(-50%);
       width: 0;
       height: 0;
-      border-left: 18px solid transparent;
-      border-right: 18px solid transparent;
-      border-top: 38px solid #c26a3d;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 52px solid #c26a3d;
       filter: drop-shadow(0 6px 8px rgba(15, 23, 42, 0.25));
     }
 
-    /* Meander circuit */
+    /* Meander circuit – rounded corners */
     .mw-meander {
       position: absolute;
       bottom: 20%;
@@ -488,16 +477,6 @@
 
     .news-text { flex: 1; }
 
-    /* Footer */
-    .site-footer {
-      border-top: 1px solid var(--border-subtle);
-      margin-top: 2rem;
-      padding: 1.4rem 0 1.8rem;
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      text-align: center;
-    }
-
     /* Entry animations */
     .hero,
     .simple-card {
@@ -568,8 +547,6 @@
 
           <!-- Interactive hero art -->
           <div class="hero-art" id="hero-art">
-            <div class="hero-grid-pattern"></div>
-
             <div class="mw-label-small">Microwave on tip &amp; on chip</div>
             <div class="mw-label-sample">2D quantum material</div>
 
@@ -582,16 +559,14 @@
             <div class="mw-meander" id="meander">
               <svg viewBox="0 0 150 80" aria-hidden="true" focusable="false">
                 <path d="
-                  M 15 10
-                  H 40
-                  V 70
-                  H 60
-                  V 10
-                  H 80
-                  V 70
-                  H 100
-                  V 10
-                  H 125
+                  M 15 20
+                  Q 35 20 40 30
+                  Q 45 40 45 50
+                  Q 45 60 60 60
+                  Q 75 60 80 50
+                  Q 85 40 85 30
+                  Q 85 20 100 20
+                  Q 120 20 135 28
                 " />
               </svg>
             </div>
@@ -644,10 +619,6 @@
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      © 2025 Ji Quantum Lab · MIT
-    </footer>
   </div>
 
   <script>
